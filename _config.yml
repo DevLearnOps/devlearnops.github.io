@@ -1,4 +1,3 @@
-
 title: "DevLearnOps Blog"
 author: "Manuel Castellin"
 description: "DevLearnOps Blog" # This will show up in places like twitter, linkedin, etc, if you share your sites url as a post.
@@ -20,4 +19,28 @@ facebook_username: devlearnops
 
 # No change below this line!!
 #
+#########################################################################################
+######### Nothing below needs to be changed (unless you know what you're doing) #########
+#########################################################################################
 theme: jekyll-theme-cayman
+
+rss: rss
+
+kramdown:
+  syntax_highlighter_opts:
+    disable: true
+    
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+titles_from_headings:
+  strip_title: true
+  collections: true
+
+defaults:
+  - scope:
+      path: ""
+      type: post
+    values:
+      tags: Other
