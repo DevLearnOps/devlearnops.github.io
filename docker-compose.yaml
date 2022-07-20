@@ -1,0 +1,10 @@
+version: '3.2'
+
+services:
+
+  blog:
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - "$PWD/docs:/site"
