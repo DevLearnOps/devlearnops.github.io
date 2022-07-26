@@ -1,7 +1,7 @@
 FROM ruby
 
 WORKDIR /site
-COPY docs/ .
+COPY docs/Gemfile* ./
 
 RUN : \
     && gem install bundler \
@@ -9,5 +9,6 @@ RUN : \
     && :
 
 EXPOSE 4000
+VOLUME /site
 
-CMD [ "/bin/sh", "-c", "bundle exec jekyll serve --host 0.0.0.0" ]
+CMD [ "/bin/sh", "-c", "bundle exec jekyll serve --host 0.0.0.0 --drafts" ]
