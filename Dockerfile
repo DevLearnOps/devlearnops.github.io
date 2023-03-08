@@ -1,4 +1,4 @@
-FROM ruby
+FROM ruby:3.2
 
 WORKDIR /site
 COPY docs/Gemfile* ./
@@ -11,4 +11,13 @@ RUN : \
 EXPOSE 4000
 VOLUME /site
 
-CMD [ "/bin/sh", "-c", "bundle exec jekyll serve --host 0.0.0.0 --drafts" ]
+RUN : \
+    && { \
+        echo '#!/bin/sh'; \
+        echo 'cd /site'; \
+        echo 'bundle exec jekyll serve --host ${HOST-0.0.0.0} ${OPTS---drafts}'; \
+    } > /entrypoint.sh \
+    && chmod +x /entrypoint.sh \
+    && :
+
+CMD ["/entrypoint.sh"]

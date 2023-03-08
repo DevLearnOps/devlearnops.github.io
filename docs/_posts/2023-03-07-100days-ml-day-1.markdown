@@ -1,0 +1,46 @@
+---
+layout: post
+title:  "Day 1 - My First Generative Model"
+date:   2023-03-07 8:28:36 +0000
+categories: 100days
+---
+
+It's official, first of 100 days working on Machine Learning!
+
+I thought to dip my toe into the water by following an [online tutorial](https://machinelearningmastery.com/text-generation-lstm-recurrent-neural-networks-python-keras/)
+and create a simple text generative model.
+
+By reading online it seems text generation is actually a very hard thing to do compared to generating an image for example.
+Exactly the opposite of what I thought, I'll be honest. Anyway, I read through the tutorial and replicated everything on my
+local machine.
+
+The model can read a file containing the entire *Alice in Wonderland* book, tokenize the book in 100 characters long sequences
+and feed them to the **LSTM Neural Network** (LSTM = Long Short Term Memory) to predict the likelyhood of a certain character to
+occur after a certain sequence.
+
+I was surpised to see how simple this concept is! And after a day's work here's the result:
+
+```
+Generating characters:
+nd shis tt cnleeti
+bo anpreh, 0nd tascenb"tstn flrodua poan iugwese,
+anr hee no saoe wo hp wso them a siny:hr,n— tem,tai ite uhfi th the toro:fddtt taa s pt,gasee.s
+gus teet toeeds, woaci iare
+foww iarg nh whl winadwc ybuteng o’a
+aatier ro sire  sea dnnldus oarea thah”  “ca aim
+tei iontshnsy”,ad cflegyilyl toucf
+ liiceco  tiaa,poesewi cos alos oa tre irtd ttetvsl
+teeline in  oowg cn toshsc
+lnantsisgai aie lel oi
+ii sueyi p arnbr
+ uhas,”osn  roms aleaere to bla wonhm’ pfie toesred
+eyaw fade wht
+```
+
+## Lessons Learned
+
+* Machine learning is not quick, took my poor Macbook almost 7 hours to complete the first round of training
+* My model is no Shakespeare
+* Generating single characters is probably not the most efficient way to tackle this problem.
+    We could be using entire words so the model would at least make some sense, but it would increase the number of
+    inputs to the model, hence require a network with a lot more variables
