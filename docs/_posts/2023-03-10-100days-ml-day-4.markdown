@@ -1,0 +1,140 @@
+---
+layout: post
+title:  "Day 4 - PyTorch for Dummies"
+date:   2023-03-10 09:06:14 +0000
+categories: 100days
+---
+
+Soooo... day 4! Exciting!
+
+Yesterday I didn't do any work on **PyTorch**, so today I decided to simply translate my previous RNN (Recursive Neural Network)
+created with Tensorflow and Keras into PyTorch code.
+
+I thought this would have been a trivial task, but turned out to be quite challenging! I don't know why people say that
+PyTorch is easier for begineers compared to Tensorflow, I don't think that's true, especially if you don't have previous
+machine learning experience.
+
+I spent a day re-implementing that simple Tensorflow model in PyTorch. By the end I managed to learn how to define new models and
+create training and evaluation loops. I think the biggest difference between the two frameworks is that Tensorflow abstracts
+a lot of the logic involved in the model training. That could be a good thing if you want to get simple things done quickly, but
+implementing a model in Pytorch forced me to think and understand how my model works, what input and hidden layers I needed ot use
+and I actually designed my own training loop.
+
+## Lessons Learned
+
+* After today I have a much better understanding of how models, training and evaluation loops work. The PyTorch approach allows greater
+    flexibility to people that want to create automations around the model definition and training
+
+## Tensorflow vs PyTorch
+
+For completeness I thought to share the two implementations so you can see the difference for yourself
+
+**The Tensorflow way**
+
+```
+model = tf.keras.Sequential([
+  tf.keras.layers.Bidirectional(
+    tf.keras.layers.LSTM(units=128, input_shape=[x_train.shape[1],x_train.shape[2]])
+  ),
+  tf.keras.layers.Dropout(.2),
+  tf.keras.layers.Dense(128, activation='relu'),
+  tf.keras.layers.Dense(y_train.shape[1], activation='softmax'),
+])
+
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.CategoricalCrossentropy(),
+              metrics=['accuracy'])
+
+hystory = model.fit(x_train,
+          y_train,
+          validation_split=0.3,
+          epochs=15)
+```
+
+**The PyTorch way**
+
+```
+class LstmClassification(torch.nn.Module):
+    def __init__(self, lstm_size: int, num_layers: int = 1):
+        super().__init__()
+        self.num_layers = num_layers
+        self.lstm_size = lstm_size
+        self.lstm = nn.LSTM(
+            input_size=5,
+            hidden_size=lstm_size,
+            bidirectional=True,
+            batch_first=True,
+            num_layers=num_layers,
+        )
+        hidden_size = self.lstm_size * 2  # bidirectional
+        self.sequential = nn.Sequential(
+            nn.Dropout(0.2),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, 2),
+        )
+
+    def forward(self, x):
+        _x = x.float()
+        h0 = torch.zeros(self.num_layers * 2, x.size(0), self.lstm_size).to(device)
+        c0 = torch.zeros(self.num_layers * 2, x.size(0), self.lstm_size).to(device)
+        out, _ = self.lstm(_x, (h0, c0))
+        out = out[:, -1, :]
+
+        out = self.sequential(out)
+        return out
+
+
+def train(
+    train_loader: DataLoader,
+    test_loader: DataLoader,
+    lstm_size: int = 128,
+    lstm_layers: int = 1,
+    learning_rate: float = 1e-3,
+    batch_size: int = 12,
+    epochs: int = 1,
+):
+
+    model = LstmClassification(lstm_size=lstm_size, num_layers=lstm_layers).to(device)
+    print("Using model: ", model)
+
+    loss_fn = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate)
+    total_steps = len(train_loader)
+    for epoch in range(epochs):
+        model.train()
+        for i, (input_seq, target_labels) in enumerate(train_loader):
+            input_seq = input_seq.to(device)
+            target_labels = target_labels.to(device)
+
+            outputs = model(input_seq)  # forward pass
+            loss = loss_fn(outputs, target_labels)  # calculate loss
+
+            optimizer.zero_grad()  # reset gradients
+            loss.backward()  # calculate gradients
+            optimizer.step()  # update weights
+
+            if (i + 1) % 100 == 0:
+                print(
+                    f"Epoch [{epoch+1}/{epochs}], Step [{i}/{total_steps}], Loss: {loss.item():.4f}"
+                )
+
+        model.eval()
+        with torch.no_grad():
+            n_correct = 0
+            n_samples = 0
+
+            for input_seq, target_labels in test_loader:
+                input_seq = input_seq.to(device)
+                target_labels = target_labels.to(device)
+
+                outputs = model(input_seq)
+                _, predicted_labels = torch.max(outputs.data, 1)
+                n_samples += target_labels.size(0)
+                n_correct += (predicted_labels == target_labels).sum().item()
+
+            acc = 100.0 * n_correct / n_samples
+            print(f"Accuracy: {acc:.2f} %")
+
+    return model
+```
