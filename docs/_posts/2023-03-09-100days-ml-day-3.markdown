@@ -14,7 +14,7 @@ I had to create a model to identify patterns in different time series. My though
 are similar things from a machine's point of view. In both every single point in the sequence is connected to what comes
 before and what comes next and ultimately they're both encoded as numbers before they can be fed into an ML model.
 
-So what I did is split a long time serie into fixed-lenght sequences with a `(10, 5)` shape: 10 points every sequence
+So what I did is split a long time serie into fixed-length sequences with a `(10, 5)` shape: 10 points every sequence
 and 5 features. This way, no matter how long the sequence is, I could classify each 10-points-long pattern as an **ok**
 or **not_ok**.
 
@@ -33,4 +33,4 @@ model = tf.keras.Sequential([
 ## Lessions Learned
 
 * Classification models are a very good fit for pattern recognition tasks!
-* Data preprocessing is a big part of any Machine Learning prject
+* Data preprocessing is a big part of any Machine Learning project
