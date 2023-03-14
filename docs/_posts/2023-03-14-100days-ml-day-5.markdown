@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Day 5 - Back To The (PyTorch) Basics"
+date:   2023-03-14 15:05:06 +0000
+categories: 100days
+---
+
+As I explained in the previous post, translating a model from Tensorflow to Pytorch turned out to be a bit more complicated than I
+initially thought. So I decided to go back to the basics and follow from PyTorch tutorials for begineers.
+
+After completing a few lessons I already feel like I have a better grasp on how PyTorch works and I'm starting to appreciate more its
+approach. I still think that Tensorflow has a lot of potential for experimentation given that you can create and train a model with three lines
+of code, though using PyTorch for the last two days forced me to think more about what I'm doing and learn exactly what every layer of my
+neural network is doing.
+
+## Lessons Learned
+
+* `PyTorch` has a steeper learning curve compared to other frameworks like `keras` and `Tensorflow`
+* There was a lot of logic I previously blindly copy-pasted into my Tensorflow model. Now with PyTorch I had to learn what every piece of the model does

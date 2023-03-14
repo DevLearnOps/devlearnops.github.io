@@ -30,7 +30,7 @@ model = tf.keras.Sequential([
 ])
 ```
 
-## Lessions Learned
+## Lessons Learned
 
 * Classification models are a very good fit for pattern recognition tasks!
 * Data preprocessing is a big part of any Machine Learning project
