@@ -28,6 +28,8 @@ author: >-
 twitter_username: castellinmanuel
 github_username:  devlearnops
 
+google_analytics: G-L9TBH7V28S
+
 # Build settings
 theme: minima
 plugins:
