@@ -19,7 +19,7 @@ and 5 features. This way, no matter how long the sequence is, I could classify e
 or **not_ok**.
 
 Here's the RNN I used in Tensorflow:
-```
+```python
 model = tf.keras.Sequential([
   tf.keras.layers.Bidirectional(
     tf.keras.layers.LSTM(units=128, input_shape=[x_train.shape[1],x_train.shape[2]])

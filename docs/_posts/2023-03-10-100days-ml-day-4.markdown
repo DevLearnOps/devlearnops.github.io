@@ -31,7 +31,7 @@ For completeness I thought to share the two implementations so you can see the d
 
 **The Tensorflow way**
 
-```
+```python
 model = tf.keras.Sequential([
   tf.keras.layers.Bidirectional(
     tf.keras.layers.LSTM(units=128, input_shape=[x_train.shape[1],x_train.shape[2]])
@@ -53,7 +53,7 @@ hystory = model.fit(x_train,
 
 **The PyTorch way**
 
-```
+```python
 class LstmClassification(torch.nn.Module):
     def __init__(self, lstm_size: int, num_layers: int = 1):
         super().__init__()
