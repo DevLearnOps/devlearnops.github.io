@@ -1,0 +1,110 @@
+# Chaos Engineering Articles Ideas
+
+Need to keep in mind that with these articles I'm promoting the following things:
+* My consulting company and how companies can hire me as a cloud engineer for a very high pay
+* My training sessions to cloud engineering teams to teach them how to approach chaos engineering and how it can help them build reliable systems
+* Promote my brand as an online education company that will sell online courses and memberships to curated members-only content
+* Promote my brand as future author of a book about getting started with chaos engineering
+
+## 100 blog posts on Chaos Engineering
+
+- [ ] talk about the top 5 chaostoolkit plugins if you're not ready to run chaos on production
+- [ ] how to get started with chaos engineering even if your production system is not ready
+- [ ] how to generate syntetic traffic with locust to simulate chaos experiments on production
+- [ ] Reasons to pick chaostoolkit to get started with chaos engineering
+- [ ] how to implement your own custom plugin for chaostoolkit
+- [ ] different ways to fail an experiment in Chaostoolkit (immediately, fail hypothesis, fail method)
+- [ ] chaostoolkit hypothesis verification strategies explained and when to use them
+- [ ] how to implement your own chaostoolkit controls
+- [ ] what are chaostoolkit controls and when should you use them
+- [ ] how to parametrise chaostoolkit experiments, settings file, variable files, inside experiments
+- [ ] what it is and how to design a chaos engineering experiments
+- [ ] resiliency patterns: most common resiliency patterns to consider for your applications
+- [ ] resiliency patterns: the circuit breaker pattern for java application with resilience4j
+- [ ] resiliency patterns: the fallback pattern for java applications with resilience4j
+- [ ] chaos on aws: the importance of using IAM rules and security groups to limit experiments blast radius
+- [ ] chaos on aws: how to schedule chaostoolkit experiments on AWS using AWS batch
+- [ ] how to bundle your chaostoolkit plugins and experiments in a container to run on AWS
+- [ ] use jinja2 templates to create highly reusable experiment templates
+- [ ] chaos on AWS: verify resiliency of services running on AWS ECS
+- [ ] chaos on testing env: how to design an experiment to test security groups configuration (ALB-TG)
+- [ ] how to schedule chaostoolkit experiments in cicd pipelines
+- [ ] A guide to create your first chaos experiment with no prior knowledge or tools (use http and `process` actions with local binaries)
+- [ ] how to store chaostoolkit journals on S3 storage location for future access and reporting
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 

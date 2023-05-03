@@ -4,14 +4,19 @@
 # 100 Docker blog post ideas for my website
 
 - [x] how to install software packages in docker alpine linux
-- [ ] how to install software packages in docker debian/ubuntu
-- [ ] how to install software packages in docker fedora/redhat
+- [ ] how to run container with no apple silicon support on new Macs M1/M2
+- [ ] running x86 containers on Apple silicon using rosetta or qemu
+- [ ] how to create containers to run on Apple silicon (Dockerfile)
+- [ ] how to build multi arch containers
+- [ ] run container as non-root user, create new linux users
 - [ ] how to create new files in containers from Dockerfile (using `echo`)
 - [ ] how to create templated files in Docker containers (envsubst/ {echo} list inside dockerfile)
-- [ ] how to manually install software in dockerfiles using `wget` and `curl`
 - [ ] how to export import mysql data from container
 - [ ] how to export import postgresql data from container
 - [ ] how to export import mongodb data from container
+- [ ] how to install software packages in docker debian/ubuntu
+- [ ] how to install software packages in docker fedora/redhat
+- [ ] how to manually install software in dockerfiles using `wget` and `curl`
 - [ ] set file permissions in docker containers
 - [ ] copy files from containers to local machine using `docker cp`
 - [ ] how to inspect files content inside containers
@@ -19,15 +24,11 @@
 - [ ] how to edit files content inside containers using nano
 - [ ] working with containers: extracting archives using `tar` and `zip`
 - [ ] searching for files inside containers
-- [ ] run container as non-root user, create new linux users
 - [ ] how to backup and restore data in container volumes
 - [ ] change container runtime user after startup using `gosu`
 - [ ] fix file permissions at container startup with entrypoint and gosu
 - [ ] how to run service from container entrypoint using `exec`
 - [ ] use parameters in docker commands and entrypoints. The `eval` command
-- [ ] how to create containers to run on Apple silicon (Dockerfile)
-- [ ] how to run container with no apple silicon support on new Macs M1/M2
-- [ ] how to build multi arch containers
 - [ ] install python packages in container from private pip registry
 - [ ] how to securely use authentication tokens to build containers
 - [ ] how to install private Maven packages in docker containers
@@ -60,11 +61,10 @@
 - [ ] how to scan containers for vulnerabilities
 - [ ] how to use docker compose profiles to run subset of applications
 - [ ] package AWS lambda function using Docker container
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] Importance of PID 1 in container and how to create entrypoints for graceful termination
+- [ ] how to develop AWS applications using docker and localstack
+- [ ] Wait until DB or application is ready `wait_until` docker compose
+- [ ] Docker container healthchecks
 - [ ] 
 - [ ] 
 - [ ] 
