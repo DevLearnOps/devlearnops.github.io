@@ -1,0 +1,106 @@
+# List of potential Docker articles
+
+
+# 100 Docker blog post ideas for my website
+
+- [x] how to install software packages in docker alpine linux
+- [ ] how to install software packages in docker debian/ubuntu
+- [ ] how to install software packages in docker fedora/redhat
+- [ ] how to create new files in containers from Dockerfile (using `echo`)
+- [ ] how to create templated files in Docker containers (envsubst/ {echo} list inside dockerfile)
+- [ ] how to manually install software in dockerfiles using `wget` and `curl`
+- [ ] how to export import mysql data from container
+- [ ] how to export import postgresql data from container
+- [ ] how to export import mongodb data from container
+- [ ] set file permissions in docker containers
+- [ ] copy files from containers to local machine using `docker cp`
+- [ ] how to inspect files content inside containers
+- [ ] how to edit files content inside containers using vi
+- [ ] how to edit files content inside containers using nano
+- [ ] working with containers: extracting archives using `tar` and `zip`
+- [ ] searching for files inside containers
+- [ ] run container as non-root user, create new linux users
+- [ ] how to backup and restore data in container volumes
+- [ ] change container runtime user after startup using `gosu`
+- [ ] fix file permissions at container startup with entrypoint and gosu
+- [ ] how to run service from container entrypoint using `exec`
+- [ ] use parameters in docker commands and entrypoints. The `eval` command
+- [ ] how to create containers to run on Apple silicon (Dockerfile)
+- [ ] how to run container with no apple silicon support on new Macs M1/M2
+- [ ] how to build multi arch containers
+- [ ] install python packages in container from private pip registry
+- [ ] how to securely use authentication tokens to build containers
+- [ ] how to install private Maven packages in docker containers
+- [ ] how to install private nodejs Npm packages in docker containers
+- [ ] "no space left on device" how to cleanup docker cache files and free disk space
+- [ ] install software in docker container conditionally with `if` structure
+- [ ] how to login to docker container registry on AWS ECR to push images
+- [ ] how to login to ECR container registry using different aws role
+- [ ] how to use host network with docker desktop on MacOs or Windows
+- [ ] use GPU in docker container for machine learning
+- [ ] how to use environment variables to modify startup behavior of a container
+- [ ] how to use arguments in docker build
+- [ ] how to check which user is running in a container
+- [ ] application in container not listening on port. How to check what port is forwarding
+- [ ] how to check what volume is used by a container and backup its data
+- [ ] how to create a simple multi stage build. Your first multi-stage build
+- [ ] file permissions when copying files in multi-stage builds
+- [ ] how to deploy a container on Amazon ECS
+- [ ] add container secrets from SSM parameters on AWS ECS
+- [ ] how to use container with read-only filesystem
+- [ ] how to remove unnecessary linux capabilities from container on AWS ECS
+- [ ] security best practices when running containers on AWS ECS
+- [ ] how to secure containers by removing special permissions (https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/security-tasks-containers.html)
+- [ ] how to configure logging for docker containers running on AWS ECS
+- [ ] how to minimize docker image size
+- [ ] how to speed up docker builds by taking advantage of the docker build cache. How to avoid dependency download every time
+- [ ] how to run python Flask applications in docker with `gunicorn` wsgi server
+- [ ] 'The connection was reset' error when accessing application on forwarded port. (host binding)
+- [ ] docker in docker. Running docker inside a container. Why and how?
+- [ ] how to scan containers for vulnerabilities
+- [ ] how to use docker compose profiles to run subset of applications
+- [ ] package AWS lambda function using Docker container
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
