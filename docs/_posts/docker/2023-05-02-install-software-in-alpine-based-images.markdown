@@ -8,25 +8,25 @@ permalink: "/install-software-alpine-docker-containers"
 
 ## 1. Overview
 
-Most container images we can find in DockerHub offer an *Alpine-based* version of the image,
-and for good reasons. If you're not familiar with <a href="https://www.alpinelinux.org/about/" target="_blank">**Alpine Linux**</a> already, it's a general purpose Linux distribution built around three principles: **Small**, **Simple** and **Secure**.
+Most container images we can find in DockerHub offer an *Alpine-based* version, and for good reasons.
+If you're not familiar with <a href="https://www.alpinelinux.org/about/" target="_blank">**Alpine Linux**</a> already, it's a general purpose Linux distribution built around three principles: **Small**, **Simple** and **Secure**.
 
-In this article, we'll learn how to customize Alpine-based Docker images by installing additional software we need to run our applications.
+In this article, we'll learn how to **customize Alpine-based Docker images by installing additional software we need to run our applications**.
 
 ## 2. *Add* Common Software Packages
 
-We already mentioned that Alpine Linux is built with simplicity in mind, so to keep Docker images as small as possible, you'll find that these containers lack even the most common software like `curl` or `bash`. So let's learn how to install them.
+Alpine Linux is built with simplicity in mind, so to keep Docker images as small as possible, you'll find that these containers lack even the most common software like `curl` or `bash`. Let's learn how to install them.
 
 Alpine Linux uses `apk` as its package manger, and like other popular Linux distros, you'll need to run an `apk update` to build repository caches before you can search and install packages.
 
-To **add** software to an Apline-based container use the `apk add <package_name>` command:
+To **add** software to an Alpine-based container use the `apk add <package_name>` command:
 
 ```terminal
 / # apk update
 / # apk add curl
 ```
 
-### Installing software in Dockerfiles
+### 2.1. Installing software in Dockerfiles
 
 When writing Dockerfiles it's good practice making sure the final container image is as small as it can be. The `apk` package manger can install software without using repository caches at all and it's the method I recommend:
 
@@ -53,13 +53,13 @@ RUN apk update \
 
 If we don't know the name of the software package in advance we can use the `apk search` command to find the correct one to install. In this example we'll install **python** and **pip** on an empty Alpine container.
 
-First let's open a shell in a new Linux Alpine container with:
+First let's open a shell in a new Alpine container with:
 ```terminal
 > docker run --rm -it alpine:3.17 /bin/sh
 / # 
 ```
 
-Then let's run an `apk update` to build the repository cache and search for the **python3** package:
+Then run an `apk update` to build the repository cache and search for the **python3** package:
 
 ```terminal
 / # apk update
@@ -86,7 +86,7 @@ You should now be able to verify the Python installation with:
 Python 3.10.11
 ```
 
-### Show packages description when searching
+### 3.1. Show packages description when searching
 
 Sometimes package names can be cryptic so it's useful to have a short description of what we're selecting. To see an example we'll search for the Python3 `pip` package using the `-v` flag:
 
@@ -101,7 +101,7 @@ pipr-0.0.16-r0 - A tool to interactively write shell pipelines
 ...
 ```
 
-Now we know the name of the package, we can install it and verify it:
+Now that we know the name of the package is `py3-pip`, we can install it and verify it works:
 
 ```terminal
 / # apk add py3-pip
@@ -112,13 +112,13 @@ OK: 85 MiB in 34 packages
 pip 23.1.2 from /usr/lib/python3.10/site-packages/pip (python 3.10)
 ```
 
-## 4. Enable Additional Alpine Package Repos
+## 4. Enable Additional Package Repositories
 
 Alpine Linux has two main package repositories:
 * **main** packages are software that have direct support from the Alpine core maintainer
-* **community** packages are those made and maintined by community contributors
+* **community** packages are those made and maintained by community contributors
 
-`Apk` package repositories are maintained in the `/etc/apk/repositories` file and by default should have two entries for *main* and *community* locations:
+**Apk package repositories are maintained in the `/etc/apk/repositories` file** and by default should have two entries for *main* and *community* locations:
 
 ```terminal
 / # cat /etc/apk/repositories
@@ -133,7 +133,7 @@ If you're trying to install software from a third-party repository, or for some 
 For instance, to make sure *main* and *community* repos are enabled in a Dockerfile:
 
 ```Dockerfile
-# Make sure community repository is enabled
+# Ensure community repository is enabled
 RUN VERSION="v$(cut -d'.' -f1,2 /etc/alpine-release)" \
     && echo "https://dl-cdn.alpinelinux.org/alpine/$VERSION/main/" > /etc/apk/repositories \
     && echo "https://dl-cdn.alpinelinux.org/alpine/$VERSION/community/" >> /etc/apk/repositories
@@ -145,7 +145,9 @@ RUN apk update \
 
 ## 5. Remove Unused Software
 
-To keep container as small and secure as possible it's good practice to remove any software we installed and it's not used by the final application. To remove installed packages we use the `apk del` command:
+To keep container as small and secure as possible it's good practice to remove any software we installed and it's not used by the final application.
+
+To remove installed packages we use the `apk del` command. For example to remove *curl*:
 
 ```terminal
 / # apk del curl
