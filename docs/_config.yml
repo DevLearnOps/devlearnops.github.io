@@ -34,6 +34,13 @@ google_analytics: G-L9TBH7V28S
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: "assets/images"
+    values:
+      image: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.

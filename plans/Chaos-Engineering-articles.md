@@ -31,7 +31,7 @@ Need to keep in mind that with these articles I'm promoting the following things
 - [ ] how to schedule chaostoolkit experiments in cicd pipelines
 - [ ] A guide to create your first chaos experiment with no prior knowledge or tools (use http and `process` actions with local binaries)
 - [ ] how to store chaostoolkit journals on S3 storage location for future access and reporting
-- [ ] 
+- [ ] how to define steady state hypothesis tolerances in chaostoolkit using ranges and values and dictionaries
 - [ ] 
 - [ ] 
 - [ ] 
