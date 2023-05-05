@@ -7,6 +7,7 @@ description: |
     understand the limitation of your system, whether it’s a production environment or even your own laptop.
 date:   2023-05-03
 categories: "chaos-engineering"
+tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
 permalink: "/first-chaos-experiment-with-chaostoolkit"
 ---

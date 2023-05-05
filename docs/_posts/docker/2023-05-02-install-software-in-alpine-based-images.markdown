@@ -6,6 +6,7 @@ description: |
     additional software we need to run our applications in containers.
 date:   2023-05-02
 categories: "containers"
+tags: docker linux
 author: "Manuel Castellin"
 permalink: "/install-software-alpine-docker-containers"
 ---
