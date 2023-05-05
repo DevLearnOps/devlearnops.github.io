@@ -22,6 +22,7 @@ Need to keep in mind that with these articles I'm promoting the following things
 - [ ] how to parametrise chaostoolkit experiments, settings file, variable files, inside experiments
 - [ ] use environment variables in chaostoolkit experiments
 - [ ] experiment safeguards with chaostoolkit: how to bail out of an experiment if the system becomes unstable
+- [ ] how to collect experiment execution results using Reliably cloud (Free account for 1 team member)
 
 - [ ] how to get started with chaos engineering even if your production system is not ready
 - [ ] how to safely retrieve secrets from SSM parameter manager for a chaostoolkit experiment
@@ -45,7 +46,6 @@ Need to keep in mind that with these articles I'm promoting the following things
 - [ ] how to schedule chaostoolkit experiments in cicd pipelines
 - [ ] how to simulate faults with chaostoolkit and wiremock
 - [ ] how to simulate faults with chaostoolkit and toxiproxy
-- [ ] how to collect experiment execution results using Reliably cloud (Free account for 1 team member)
 - [ ] observability: validate application state from Datadog
 - [ ] observability: validate application state from cloudwatch using chaostoolkit-aws plugin
 - [ ] how to simulate AZ failure on aws using chaostoolkit
@@ -61,8 +61,8 @@ Need to keep in mind that with these articles I'm promoting the following things
 - [ ] how to send experiments tracing information to your observability stack (DataDog)
 - [ ] how to send experiments tracing information to the observability stack (Prometheus)
 - [ ] how to exclude service from being targetd by chaos experiments with chaostoolkit using AWS Tags and safeguards
-- [ ] 
-- [ ] 
+- [ ] how to create some custom reporting from the journal files stored in the s3 bucket
+- [ ] add load generation in chaos experiment with background processes (background flag for process action)
 - [ ] 
 - [ ] 
 - [ ] 
