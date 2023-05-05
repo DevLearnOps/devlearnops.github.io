@@ -1,8 +1,13 @@
 ---
 layout: post
 title:  "Your First Chaos Engineering Experiment With ChaosToolkit"
+description: |
+    Chaos Engineering is not about using complicated and expensive tools.
+    It’s about understanding a few principles and using them to design experiments that will help you
+    understand the limitation of your system, whether it’s a production environment or even your own laptop.
 date:   2023-05-03
-categories: chaos-engineering
+categories: "chaos-engineering"
+author: "Manuel Castellin"
 permalink: "/first-chaos-experiment-with-chaostoolkit"
 ---
 

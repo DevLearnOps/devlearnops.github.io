@@ -8,15 +8,22 @@ Need to keep in mind that with these articles I'm promoting the following things
 
 ## 100 blog posts on Chaos Engineering
 
+- [x] A guide to create your first chaos experiment with no prior knowledge or tools (use http and `process` actions with local binaries)
+- [ ] how to define steady state hypothesis tolerances in chaostoolkit using ranges and values and dictionaries
+- [ ] how to store chaostoolkit journals on S3 storage location for future access and reporting
 - [ ] talk about the top 5 chaostoolkit plugins if you're not ready to run chaos on production
 - [ ] how to get started with chaos engineering even if your production system is not ready
-- [ ] how to generate syntetic traffic with locust to simulate chaos experiments on production
+- [ ] how to use secrets in a chaostoolkit experiment
+- [ ] how to safely retrieve secrets from SSM parameter manager for a chaostoolkit experiment
+- [ ] how to generate syntetic user traffic with locust to run chaos experiments on test environments
+- [ ] how to generate syntetic user traffic with k6 to run chaos experiments on test environments
 - [ ] Reasons to pick chaostoolkit to get started with chaos engineering
 - [ ] how to implement your own custom plugin for chaostoolkit
 - [ ] different ways to fail an experiment in Chaostoolkit (immediately, fail hypothesis, fail method)
 - [ ] chaostoolkit hypothesis verification strategies explained and when to use them
 - [ ] how to implement your own chaostoolkit controls
-- [ ] what are chaostoolkit controls and when should you use them
+- [ ] how to implement custom chaostoolkit modules
+- [ ] what are chaostoolkit controls and when should you use them, and what are the most useful controls to start
 - [ ] how to parametrise chaostoolkit experiments, settings file, variable files, inside experiments
 - [ ] what it is and how to design a chaos engineering experiments
 - [ ] resiliency patterns: most common resiliency patterns to consider for your applications
@@ -25,37 +32,33 @@ Need to keep in mind that with these articles I'm promoting the following things
 - [ ] chaos on aws: the importance of using IAM rules and security groups to limit experiments blast radius
 - [ ] chaos on aws: how to schedule chaostoolkit experiments on AWS using AWS batch
 - [ ] how to bundle your chaostoolkit plugins and experiments in a container to run on AWS
-- [ ] use jinja2 templates to create highly reusable experiment templates
+- [ ] use jinja2 templates to create highly reusable experiment templates (create opensource jinja preprocessing cli)
 - [ ] chaos on AWS: verify resiliency of services running on AWS ECS
 - [ ] chaos on testing env: how to design an experiment to test security groups configuration (ALB-TG)
 - [ ] how to schedule chaostoolkit experiments in cicd pipelines
-- [ ] A guide to create your first chaos experiment with no prior knowledge or tools (use http and `process` actions with local binaries)
-- [ ] how to store chaostoolkit journals on S3 storage location for future access and reporting
-- [ ] how to define steady state hypothesis tolerances in chaostoolkit using ranges and values and dictionaries
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] how to simulate faults with chaostoolkit and wiremock
+- [ ] how to simulate faults with chaostoolkit and toxiproxy
+- [ ] use environment variables in chaostoolkit experiments
+- [ ] how to collect experiment execution results using Reliably cloud (Free account for 1 team member)
+- [ ] experiment safeguards with chaostoolkit: how to bail out of an experiment if the system becomes unstable
+- [ ] ctk-addons: the `repeat` control how to use it in experiments
+- [ ] ctk-addons: the `bypass` control how to use it in experiments
+- [ ] ctk-addons: the `sychronization` control how to use it in experiments
+- [ ] observability: validate application state from Datadog
+- [ ] observability: validate application state from cloudwatch using chaostoolkit-aws plugin
+- [ ] how to simulate AZ failure on aws using chaostoolkit
+- [ ] a chaos experiment to verify the impact of downstream latency on a system
+- [ ] how to create a chaos engineering experiment on AWS FIS
+- [ ] how reuse AWS FIS experiments with chaostoolkit
+- [ ] resiliency best practices on AWS ECS: service autoscaling using step scaling
+- [ ] resiliency best practices on AWS ECS: service autoscaling using target tracking
+- [ ] create an experiment to test RDS database failure with chaostoolkit
+- [ ] 10 ways to blow up your kubernetes cluster [How to blow up k8s](https://youtu.be/FrQ8Lwm9_j8)
+- [ ] AWS FIS: how to disrupt network connectivity in a subnet using aws fis
+- [ ] design chaos engineering experiments for application security
+- [ ] how to send experiments tracing information to your observability stack (DataDog)
+- [ ] how to send experiments tracing information to the observability stack (Prometheus)
+- [ ] how to exclude service from being targetd by chaos experiments with chaostoolkit using AWS Tags and safeguards
 - [ ] 
 - [ ] 
 - [ ] 
