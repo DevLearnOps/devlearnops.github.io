@@ -63,7 +63,7 @@ Need to keep in mind that with these articles I'm promoting the following things
 - [ ] how to exclude service from being targetd by chaos experiments with chaostoolkit using AWS Tags and safeguards
 - [ ] how to create some custom reporting from the journal files stored in the s3 bucket
 - [ ] add load generation in chaos experiment with background processes (background flag for process action)
-- [ ] 
+- [ ] how to use the probe tolerance. This is confusing how it should work so we need to figure out some examples
 - [ ] 
 - [ ] 
 - [ ] 
