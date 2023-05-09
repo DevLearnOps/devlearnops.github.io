@@ -75,8 +75,8 @@ If you wish to follow along with the steps described in this article and test it
 
 I prepared a custom ChaosToolkit module to demostrate some tolerance verification features, so let's install it form the GitHub repository with the following command:
 
-```terminal
-# pip install git+https://github.com/DevLearnOps/tutorials.git@main#subdirectory=modules/chaostoolkit-tutorial
+```shell
+pip install git+https://github.com/DevLearnOps/tutorials.git@main#subdirectory=modules/chaostoolkit-tutorial
 ```
 
 After installing this package, a new Python module `chaostutorial` will be available to use in our experiments.
@@ -85,18 +85,18 @@ After installing this package, a new Python module `chaostutorial` will be avail
 
 If we want to create an experiment verification we need something to verify. Let's start a new Nginx server with Docker and bind port *8080*:
 
-```terminal
-# docker run -d --name webserver --publish 8080:80 nginx
+```shell
+docker run -d --name webserver --publish 8080:80 nginx
 ```
 
 And verify the web server is online by navigating to `http://localhost:8080` using a web browser, or from the command line:
 
-```terminal
-# curl -I http://localhost:8080
-HTTP/1.1 200 OK
-Server: nginx/1.23.4
-Date: Sat, 06 May 2023 14:25:50 GMT
-Content-Type: text/html ...
+```shell
+curl -I http://localhost:8080
+# HTTP/1.1 200 OK
+# Server: nginx/1.23.4
+# Date: Sat, 06 May 2023 14:25:50 GMT
+# Content-Type: text/html ...
 ```
 
 ### 3.3. Create the experiment structure
@@ -132,31 +132,31 @@ We learned that tolerances are evaluated against the output value of a probe. So
 
 The best way to do this is just run the experiment once and then search for the probe output in the **journal.json** file. To check the output of the `http` probe defined in the experiment:
 
-```terminal
-# chaos run probe-tolerances.yaml
+```shell
+chaos run probe-tolerances.yaml
 ```
 
 And then open the **journal.json** file with our favourite editor and find the value for *steady_states > before > probes > output*.
 
 I prefer not to leave the command line for this, so I use `jq` to print the output values in the console:
 
-```terminal
-# jq '.steady_states.before.probes[].output' journal.json
-
-{
-  "status": 200,
-  "headers": {
-    "Server": "nginx/1.23.4",
-    "Date": "Sat, 06 May 2023 14:24:46 GMT",
-    "Content-Type": "text/html",
-    "Content-Length": "615",
-    "Last-Modified": "Tue, 28 Mar 2023 15:01:54 GMT",
-    "Connection": "keep-alive",
-    "ETag": "\"64230162-267\"",
-    "Accept-Ranges": "bytes"
-  },
-  "body": "<!DOCTYPE html>\n<html>\n<head>\n ..."
-}
+```shell
+jq '.steady_states.before.probes[].output' journal.json
+# 
+# {
+#   "status": 200,
+#   "headers": {
+#     "Server": "nginx/1.23.4",
+#     "Date": "Sat, 06 May 2023 14:24:46 GMT",
+#     "Content-Type": "text/html",
+#     "Content-Length": "615",
+#     "Last-Modified": "Tue, 28 Mar 2023 15:01:54 GMT",
+#     "Connection": "keep-alive",
+#     "ETag": "\"64230162-267\"",
+#     "Accept-Ranges": "bytes"
+#   },
+#   "body": "<!DOCTYPE html>\n<html>\n<head>\n ..."
+# }
 ```
 
 But wait a minute! If this is the actual probe output, how can our `tolerance: 200` match this entire structure? 🤔
@@ -359,8 +359,8 @@ The **jsonpath** tolerance uses Python's `jsonpath2` library under the hood. Lik
 
 To use **jsonpath** we first need to install it:
 
-```terminal
-# pip install jsonpath2
+```shell
+pip install jsonpath2
 ```
 
 As an example we're going to use jsonpath to match some values returned by the http probe. As part of the response we can access all header values returned. For example we could access the *mime-type* information directly from the headers:

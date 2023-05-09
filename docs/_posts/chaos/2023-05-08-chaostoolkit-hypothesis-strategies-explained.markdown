@@ -12,26 +12,25 @@ permalink: "/chaostoolkit-hypothesis-strategies-explained"
 todo:
 - [ ] include some snippet of command execution output when using options
 
-Title: failing fast, use steady steate hypothesis
 
+## 1. Overview
 
-Defining the right steady-state hypothesis is the first step towards a successful chaos expeirment. The seond step is picking the right verification strategy.
+Defining the right steady-state hypothesis is the first step towards a successful chaos experiment. The second step is **selecting the right verification strategy**.
 
-In a controlled chaos experiment the goal isn't to ultimately breaking the system. What business owner in their right mind would allocate budget for engineers to "break" their infrastructure!
+The goal of a controlled chaos experiment isn't breaking random things in the system. After all, no business owner in their right mind would allocate budget to just "break" their infrastructure.
 
-As chaos engineers we're just interested in learning how the system reacts to certain real-world events, so when we develop an experiment it's important to ask WHEN is the right time to bail out of an experiment. 
+As chaos engineers we're interested in learning how the system reacts to certain real-world events, so in order to avoid unwanted disruptions, when we develop an experiment **it's important to ask WHEN is the right time to bail out of an experiment**. 
 
 In this article we'll examine the different strategies for hypothesis verifications that are available in ChaosToolkit so we can choose the right one for our experiments.
 
+## 2. One Time vs Continuous Verification
 
-## One Time vs Continuous
+The first thing we need to decide about hypothesis verification is whether we want to run it just once or continuously. This largely depends on the type of experiment we're running and the context we're running it in. Here are some things to consider before making this choice:
 
-The first distinction is whether we want to verify our hypothesis once or continuously. This largely depends on the type of experiment we're running and the context we're running it in. Some things to keep in mind:
+* **Can we live with the consequences of a temporary failure in the target system** or it's important to cancel the experiment as soon as an unforeseen problem arises?
+* **Do the effect caused by introducing a chaos event in the system need time to self-heal**? Or should this be transparent to an outside observer? For example: if we kill a container we will lose some requests in the process, but if we simulate a spike in traffic we can expect the service to scale and handle all requests correctly.
 
-* Can we live with a temporary failure of the target system or it's important to cancel the experiment as soon as a problem airses?
-* Do the effect caused by introducing a chaos event in the system need time to self-heal? Or should this be transparent to an outside observer? (killing microservices has temproary consequence vs spiking traffic should just scale)
-
-### before and after verifications
+## 3. Before And After Hypothesis Verification
 
 This type of verification is more suited when the effects of the real world events introduced by our chaos experiment do cause an observable change that is part of the verification. Take this experiment for instance:
 
@@ -44,12 +43,10 @@ In this experiment we verify a certain application can self-heal when it loses h
 
 The correct verification strategy in this case would be the `default`. By default Chaostoolkit verifies the hypothesis before and after the experiment.
 
-```terminal
-# chaos run experiment.yaml
-
-or
-
-# chaos run --hypothesis-strategy=default experiment.yaml
+```shell
+chaos run experiment.yaml
+# or
+chaos run --hypothesis-strategy=default experiment.yaml
 ```
 
 The before verification guarantees that the system is stable before we start experimenting with it. Remeber, we don't want to be running experiments on systems that are already unstable. First we would just pile on the root cause of the problem by adding yet one more thing for support engineer to investigate, second our experiment would be useless as we're learning absolutely nothing conclusive about the system.
