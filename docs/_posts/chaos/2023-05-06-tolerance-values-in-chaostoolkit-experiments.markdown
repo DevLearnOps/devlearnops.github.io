@@ -333,6 +333,7 @@ Like range tolerances, **regex** supports the **target** attribute to select a s
 
 An interesting use for the *target* in combination with *regex* is to match the output of a **process** probe:
 
+{% raw %}
 ```yaml
 steady-state-hypothesis:
   title: "Regex matching with target"
@@ -348,6 +349,7 @@ steady-state-hypothesis:
         path: docker
         arguments: "container ps --filter name=webserver --format '{{lower .Names}}'"
 ```
+{% endraw %}
 
 When using the **process** probe, the actual output of the shell command is in the `stdout` field of the returned object. This match would not have been possible using a scalar tolerance, so this is a simple way to work around the problem.
 
