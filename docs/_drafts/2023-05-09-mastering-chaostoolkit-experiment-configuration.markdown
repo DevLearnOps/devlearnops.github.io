@@ -2,7 +2,8 @@
 layout: post
 title:  "Mastering ChaosToolkit Experiment Configuration: A Comprehensive Guide"
 description: |
-    TODO
+    Learn how to use variables in ChaosToolkit tempates and reuse experiments in different contexts
+    by providing configuration parameter overrides.
 date:   2023-05-09
 categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
@@ -12,15 +13,15 @@ permalink: "/mastering-chaostoolkit-experiment-configuration"
 
 ## 1. Overview
 
-Reusability is one of the most important concepts in software engineering. The ability to reuse code and components developed by someone else allows us to create complex systems with ease because we don't have to design every single detail of an application from scratch.
+Reusability is one of the most essential concepts in software engineering. The ability to reuse code and components developed by someone else allows us to easily create complex systems because we don't have to design every single detail of an application from scratch.
 
-Libraries, SDKs, databases, APIs all have something in common: we can modify their behaviour using configuration parameters. So why shouldn't we do the same with chaos experiments?
+Libraries, SDKs, databases, and APIs all have something in common: we can modify their behaviour using *configuration parameters*. So why shouldn't we do the same with chaos experiments?
 
-In this article we'll look at how we can use configuration parameters in ChaosToolkit templates so we can reuse them in different contexts.
+In this article, we'll look at **how we can use variables in ChaosToolkit templates and reuse experiments in different contexts**.
 
 ## 2. Before We Begin
 
-Before we explore all the different options available for configuration parameters in ChaosToolkit, let's create a simple experiment we can work with.
+Before we explore all the options available for configuration parameters in ChaosToolkit, let's create a simple experiment we can work with.
 
 We create a new file called `experiment.yaml` and add the following content:
 
@@ -59,7 +60,7 @@ method:
 
 This template contains hardcoded values for all its probes and actions arguments, making it impossible to reuse it without modifying its content. Let's fix that right away!
 
-| I always try to make sure you can try all the examples in the article yourself. If you're interested, the full code examples and setup instructions are available <a href="https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/mastering-chaostoolkit-experiment-configuration" target="_blank">over on GitHub</a>
+| I always make sure you can try all the examples in the article yourself. If you're interested, the full code examples and setup instructions are available <a href="https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/mastering-chaostoolkit-experiment-configuration" target="_blank">over on GitHub</a>
 
 ## 3. Inline Configuration
 
@@ -85,12 +86,12 @@ steady-state-hypothesis:
   title: "Verify web server is available"
   probes: [...]
 
-# Simulate some traffic on the environment
+# Simulate some traffic in the environment
 # using Grafana K6
 method: [...]
 ```
 
-We can use **inline configuration to provide default values for our experiment**. Which value to use depends entirely on your use case. I prefer to use inline configuration to make sure we can run experiments locally in the development phase.
+We can use **inline configuration to provide default values for our experiment**. Which value to use depends entirely on your use case. I prefer using inline configuration to ensure we can run experiments locally in the development phase.
 
 We use the `${variable_name}` syntax in ChaosToolkit experiments to replace variables with their resolved value. So let's refactor the entire experiment to use variables from the configuration section:
 
@@ -137,7 +138,7 @@ method:
 
 ## 4. Variable Files
 
-Now that we have parametrised the experiment template we have options to override those default values and run the same experiment templates in different contexts. One way to achieve this is **by maintaining some configuration files outside of the experiment**.
+Now that we have parametrised the experiment template, we can override those default values and run the same experiment template in different contexts. One way to achieve this is **by maintaining some configuration files outside of the experiment**.
 
 Let's create a new file called `dev-overrides.yaml` and add the following content:
 
@@ -149,7 +150,7 @@ configuration:
 
 | ChaosToolkit can work with configuration files, just like experiments, in either **JSON** or **YAML** format. I prefer the latter as it's more compact and allows comments for better documentation.
 
-We can tell ChaosToolkit to use the **dev-overrides.yaml** file when we're running the experiment in our **DEV** environment and execute the *stress-endpoint* action for longer and with a higher number of simulated users. To use variables override from the external configuration file we use this command:
+We can tell ChaosToolkit to use the **dev-overrides.yaml** file when we're running the experiment in our **DEV** environment and execute the *stress-endpoint* action for longer and with a higher number of simulated users. To use variables override from the external configuration file, we use this command:
 
 ```shell
 chaos run --var-file dev-overrides.yaml experiment.yaml
@@ -158,9 +159,9 @@ chaos run --var-file dev-overrides.yaml experiment.yaml
 # ...
 ```
 
-The `--var-file` option **can be used multiple times in the same chaos command**. This way we could separate our configuration even further and create even more specific files that override only a few parameters.
+The `--var-file` option **can be used multiple times in the same chaos command**. This way, we could separate our configuration further and create more specific files that override only a few parameters.
 
-For instance, if we want to create a configuration to absolutely hammer the dev environment with requests, we could create another configuration file `dev-heavy-load.yaml` with:
+For instance, if we want to create a configuration to absolutely hammer the dev environment with requests, we could add another configuration file `dev-heavy-load.yaml` with:
 
 ```yaml
 configuration:
@@ -179,11 +180,11 @@ chaos run \
 # ...
 ```
 
-| When using multiple override **files order counts**! Make sure you specify override files **in order from the least specific to the more specific**.
+| When using multiple override **files order counts**! Make sure you specify override files **from the least specific to the more specific**.
 
 ## 5. Command-Line Variables
 
-Variable overrides can also be passed to a ChaosToolkit experiments directly from the command line using the `--var KEY=VALUE` option. This is useful in many cases, whether you need to test something during development **or pass variables that are not known beforehand and need to be resolved later on**:
+Variable overrides can also be passed to ChaosToolkit experiments directly from the command line using the `--var KEY=VALUE` option. This is useful in many cases, whether you need to test something during development **or pass variables that are not known beforehand and need to be resolved later on**:
 
 ```shell
 chaos run --var 'endpoint=https://my-test-server:443/' experiment.yaml
@@ -213,7 +214,7 @@ Whenever more than one value is provided for the same variable name, ChaosToolki
 
 ## 7. Replace Environment Variables
 
-ChaosToolkit also offers the option to use environment variables in experiments. To replace environment variables in a template we first need to define the inline experiment configuration using the following syntax:
+ChaosToolkit also offers the option to use environment variables in experiments. To replace environment variables in a template, we first need to define the inline experiment configuration using the following syntax:
 
 ```yaml
 configuration:
@@ -223,7 +224,7 @@ configuration:
     default: "http://localhost:8080"
 ```
 
-Environment substitution can be a great way to parametrise experiments especially if you already have a lot of context already stored in environment variables.
+Environment substitution can be a great way to parametrise experiments, especially if you already have a lot of context stored in environment variables.
 
 To specify a value for our `APP_ENDPOINT`:
 
@@ -235,9 +236,9 @@ chaos run experiment.yaml
 # ...
 ```
 
-One thing to remember is that **all variables with `type: "env"` will resolve as strings by default**. If we don't take care, this could render them incompatible with certain action attributes, like the number of virtual users in our experiment for instance.
+Remember that **all variables with `type: "env"` will resolve as strings by default**. If we don't take care, this could render them incompatible with specific action attributes, like the number of virtual users in our experiment for instance.
 
-Whenever we need to use numeric or boolean types from environment variables we need to specify the **env_var_type** key:
+Whenever we need to use numeric or boolean types from environment variables, we need to specify the **env_var_type** key:
 
 ```yaml
 configuration:
@@ -257,9 +258,9 @@ Using **env_var_type** will force the experiment to cast the value to the type s
 
 ### 7.1. How to use environment variables with existing experiments
 
-Goes without saying that if a template is not designed to accept environment variables we cannot use them as parameters for the experiment. Not directly anyway.
+It goes without saying that if a template is not designed to accept environment variables, we cannot use them as parameters for the experiment. Not directly, anyway.
 
-We can however, find clever ways to translate them into usable variable overrides. For example we could add them as command-line overrides:
+We can, however, find clever ways to translate them into usable variable overrides. For example, we could add them as command-line overrides:
 
 ```shell
 export STRESS_DURATION_MINUTES=2
@@ -271,6 +272,6 @@ chaos run --var "stress_duration=${STRESS_DURATION_MINUTES}m" experiment.yaml
 
 ## 8. Conclusion
 
-In this article we learned how we can parametrise experiment templates in ChaosToolkit and how to override default values using configuration files or command-line arguments.
+In this article, we learned how to parametrise experiment templates in ChaosToolkit and override default values using configuration files or command-line arguments.
 
-I hope you enjoyed it and if you want to see the full code examples we used in this article and more you can find them <a href="https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/mastering-chaostoolkit-experiment-configuration" target="_blank">over on GitHub</a>
+I hope you enjoyed it, and if you want to see the full code examples we used in this article and more you can find them <a href="https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/mastering-chaostoolkit-experiment-configuration" target="_blank">over on GitHub</a>
