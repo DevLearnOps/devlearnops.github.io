@@ -25,6 +25,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://devlearnops.com" # the base hostname & protocol for your site, e.g. http://example.com
 author: >-
   { "author": "Manuel Castellin" }
+#email: "devlearnops@proton.me"
 twitter_username: castellinmanuel
 github_username:  devlearnops
 

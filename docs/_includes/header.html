@@ -18,7 +18,6 @@
         </label>
 
         <div class="trigger">
-            <a class="page-link" href="https://devlearnops.com/">Courses</a>
           {% assign sorted_pages = site.pages | sort: "order" %}
           {%- for my_page in sorted_pages -%}
             {%- if my_page.title -%}
