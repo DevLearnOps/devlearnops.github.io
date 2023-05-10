@@ -22,7 +22,7 @@ title: DevLearnOps
 description: >- # this means to ignore newlines until "baseurl:"
   Learn DevOps with hands-on, practical examples and projects.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://blog.devlearnops.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://devlearnops.com" # the base hostname & protocol for your site, e.g. http://example.com
 author: >-
   { "author": "Manuel Castellin" }
 twitter_username: castellinmanuel
