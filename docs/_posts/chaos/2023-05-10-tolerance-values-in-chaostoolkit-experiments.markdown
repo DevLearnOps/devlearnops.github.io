@@ -2,8 +2,8 @@
 layout: post
 title:  "A Guide To Probe Tolerances In ChaosToolkit Experiment Verifications"
 description: |
-    TODO
-date:   2023-05-06
+    Learn how to configure hypothesis verification tolerance values for ChaosToolkit experiments.
+date:   2023-05-10
 categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
@@ -11,28 +11,26 @@ permalink: "/set-tolerance-values-in-chaostoolkit-experiments"
 ---
 
 ## Table Of Contents
-<!-- vim-markdown-toc Redcarpet -->
 
 * [1. Overview](#1-overview)
 * [2. Tolerance And Steady-State Verification](#2-tolerance-and-steady-state-verification)
 * [3. Before we begin](#3-before-we-begin)
-    * [3.1. Required ChaosToolkit modules](#3-1-required-chaostoolkit-modules)
-    * [3.2. Run a local Nginx server for testing](#3-2-run-a-local-nginx-server-for-testing)
-    * [3.3. Create the experiment structure](#3-3-create-the-experiment-structure)
+    * [3.1. Required ChaosToolkit modules](#31-required-chaostoolkit-modules)
+    * [3.2. Run a local Nginx server for testing](#32-run-a-local-nginx-server-for-testing)
+    * [3.3. Create the experiment structure](#33-create-the-experiment-structure)
 * [4. What Are Probes Returning?](#4-what-are-probes-returning)
 * [5. How To Set Tolerances For Probes](#5-how-to-set-tolerances-for-probes)
-    * [5.1. Tolerance for scalar values](#5-1-tolerance-for-scalar-values)
-    * [5.2. Sequences](#5-2-sequences)
-    * [5.3. Ranges](#5-3-ranges)
-    * [5.3. Regular expressions](#5-3-regular-expressions)
-    * [5.4. Match complex objects with jsonpath](#5-4-match-complex-objects-with-jsonpath)
+    * [5.1. Tolerance for scalar values](#51-tolerance-for-scalar-values)
+    * [5.2. Sequences](#52-sequences)
+    * [5.3. Ranges](#53-ranges)
+    * [5.3. Regular expressions](#54-regular-expressions)
+    * [5.4. Match complex objects with jsonpath](#55-match-complex-objects-with-jsonpath)
 * [6. Conclusion](#6-conclusion)
 
-<!-- vim-markdown-toc -->
 
 ## 1. Overview
 
-Defining the steady-state hypothesis is the first step in creating a chaos engineering experiment.
+Defining the steady-state hypothesis is the first step in creating a great chaos engineering experiment.
 Chaostoolkit offers a wide variety of probes to choose from to create steady-state hypothesis verifications, but the most important part is setting the correct tolerance for every verification.
 
 > Start by defining ‘steady state’ as some **measurable output** of a system that indicates normal behaviour.
@@ -306,7 +304,7 @@ steady-state-hypothesis:
         timeout: 3
 ```
 
-### 5.3. Regular expressions
+### 5.4. Regular expressions
 
 Regular expressions are a powerful text-matching tool, and we can use them with our tolerances by specifying the **regex** type:
 
@@ -353,7 +351,7 @@ steady-state-hypothesis:
 
 When using the **process** probe, the actual output of the shell command is in the `stdout` field of the returned object. This match would not have been possible using a scalar tolerance, so this is a simple way to work around the problem.
 
-### 5.4. Match complex objects with jsonpath
+### 5.5. Match complex objects with jsonpath
 
 Last, we'll see how to use **jsonpath** to define complex matching criteria when probes return deep JSON structures.
 
