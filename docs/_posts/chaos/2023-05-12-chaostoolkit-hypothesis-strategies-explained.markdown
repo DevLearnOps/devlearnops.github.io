@@ -4,7 +4,7 @@ title:  "ChaosToolkit Steady-State Verification Strategies Explained"
 description: |
     Learn how to use the right steady-state hypothesis verification strategy for ChaosToolkit experiments
     by looking at real-world examples.
-date:   2023-05-08
+date:   2023-05-12
 categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"

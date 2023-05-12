@@ -4,7 +4,7 @@ title:  "Mastering ChaosToolkit Experiment Configuration: A Comprehensive Guide"
 description: |
     Learn how to use variables in ChaosToolkit tempates and reuse experiments in different contexts
     by providing configuration parameter overrides.
-date:   2023-05-09
+date:   2023-05-17
 categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
