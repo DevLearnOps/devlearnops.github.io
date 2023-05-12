@@ -17,16 +17,16 @@ Defining the right steady-state hypothesis is the first step towards a successfu
 
 The goal of a controlled chaos experiment isn't breaking random things in the system. After all, no business owner in their right mind would allocate a budget to "break" their infrastructure.
 
-As chaos engineers, we're interested in learning how the system reacts to certain real-world events, so to avoid unwanted disruptions, when we develop an experiment **it's important to ask WHEN is the right time to bail out of an experiment**.
+As chaos engineers, we're interested in learning how the system reacts to certain real-world events, so to avoid unwanted disruptions, when we develop an experiment **it's important to ask WHEN is the right time to bail out**.
 
 In this article, we'll examine the different strategies for hypothesis verifications available in ChaosToolkit so we can choose the right one for our experiments.
 
 ## 2. One-Time vs Continuous Verification
 
-The first thing we need to decide about hypothesis verification is whether we want to run it just once or continuously. This largely depends on the type of experiment we're running and the context we're running it in. Here are some things to consider before making this choice:
+The first thing we need to decide about hypothesis verification is whether we want to run it just **once** or **continuously**. This largely depends on the type of experiment we're running and the context we're running it in. Here are some things to consider before making this choice:
 
 * **Can we live with the consequences of a temporary failure in the target system** or it's essential to cancel the experiment as soon as an unforeseen problem arises?
-* **Do the effect caused by introducing a chaotic event in the system need time to self-heal**? Or should this be transparent to an outside observer? For example: if we kill a container, we will lose some requests in the process, but if we simulate a spike in traffic, we can expect the service to scale and handle all requests correctly.
+* **Do the effects caused by introducing a chaotic event in the system need time to self-heal**? Or should this be transparent to an outside observer? For example: if we kill a container, we will lose some requests in the process, but if we simulate a spike in traffic, we can expect the service to scale and handle all requests correctly.
 
 ## 3. Before And After Hypothesis Verification
 
@@ -80,7 +80,7 @@ chaos run experiment.yaml
 chaos run --hypothesis-strategy=default experiment.yaml
 ```
 
-The *before* verification guarantees that the system is stable before we start experimenting with it. **We don't want to run experiments on systems that are already unstable**. So when a before verification fails, the **experiment is immediately stopped** to guarantee we're not piling on existing issues.
+The *before* verification guarantees that the system is stable before we start experimenting with it. **We don't want to run experiments on systems that are already unstable**. So when a *before* verification fails, the **experiment is immediately stopped** to guarantee we're not piling on existing issues.
 
 The *after* verification is necessary to verify the system can indeed self-heal and repair the application by spawning additional instances to match the desired container count.
 
@@ -112,6 +112,7 @@ steady-state-hypothesis:
           cluster: "${cluster_arn}"
           service: "${service_name}"
 
+# Set a new value for desired containers
 method:
   - type: action
     name: "update-service-container-count"
@@ -127,7 +128,7 @@ method:
       after: ${allowed_start_time_seconds}
 ```
 
-This is a slight variation of the previous example. With this experiment, we want to ensure an application can scale out instances correctly.
+This is a slight variation of the previous example. The experiment ensures the application can scale out instances correctly.
 
 In this case, running the verification at the start of the experiment doesn't help, as we need to first run the method to set the new desired container count for the service.
 
@@ -180,7 +181,7 @@ method:
         duration: ${stress_duration}
 ```
 
-The template will verify that the target service can handle a sudden increase in traffic spike, and the steady state hypothesis confirms that health checks return a *success HTTP status code*.
+The template will verify that the target service can handle a sudden increase in traffic, and the steady state hypothesis confirms that health checks return a *success HTTP status code*.
 
 The experiment would run successfully by just running with the *default* before and after verification, though **checking the service continuously has much more value in this case** as we'll make sure the additional traffic is not affecting the application at any point during the test.
 
@@ -195,7 +196,10 @@ ChaosToolkit will now run the hypothesis verification every few seconds, and **i
 The frequency (in seconds) with which the experiment verification runs can be customised using the `--hypothesis-frequency` option:
 
 ```shell
-chaos run --hypothesis-strategy=continuously --hypothesis-frequency=2 experiment.yaml
+chaos run \
+    --hypothesis-strategy=continuously \
+    --hypothesis-frequency=2 \
+    experiment.yaml
 ```
 
 ### 5.1. Continuously vs During-method-only
@@ -214,13 +218,13 @@ In fact, the biggest difference between the two strategies is that by using **th
 
 ### 5.2. Fail-fast option
 
-Both continuous verification strategies support the additional `--fail-fast` flag. This option does exactly what it says: stop the experiment as soon as the probe verification fails for the first time. To use it:
+Both continuous verification strategies support the additional `--fail-fast` flag. This option does exactly what it says: **stop the experiment as soon as the probe verification fails for the first time**. To use it:
 
 ```shell
 chaos run --hypothesis-strategy=continuously --fail-fast experiment.yaml
 ```
 
-A word or warning, though, you may think that using **continuously** or **during-method-only** with `--fail-fast` will ultimately have the same effect because if the first verification fails, both experiments will stop. **It DOES NOT**. ⚠️
+A word or warning, though, you may think that using *continuously* or *during-method-only* with `--fail-fast` will ultimately have the same effect because if the first verification fails, both experiments will stop. **It DOES NOT**. ⚠️
 
 I encourage you to try these two combinations yourself to fully understand the execution flow. Still, the key lesson is that the **during-method-only will always enter the experiment method and, at the very least, run the first step**. For this reason, we can't guarantee the `--fail-fast` and `during-method-only` combination will not affect an already unstable system.
 
