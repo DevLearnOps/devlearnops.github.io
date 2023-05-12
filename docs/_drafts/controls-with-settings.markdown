@@ -8,7 +8,7 @@ date:   2023-05-20
 categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
-# permalink: "/mastering-chaostoolkit-experiment-configuration"
+permalink: "/apply-ctk-controls-globally-with-config-files"
 excerpt: ""
 ---
 

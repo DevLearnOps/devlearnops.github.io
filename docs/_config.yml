@@ -33,7 +33,7 @@ google_analytics: G-L9TBH7V28S
 
 # Build settings
 theme: minima
-show_excerpts: true
+show_excerpts: false
 plugins:
   - jekyll-feed
   - jekyll-sitemap
