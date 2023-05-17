@@ -11,17 +11,17 @@ Need to keep in mind that with these articles I'm promoting the following things
 - [x] A guide to create your first chaos experiment with no prior knowledge or tools (use http and `process` actions with local binaries)
 - [ ] ctk-addons: the `repeat` control how to use it in experiments
 - [ ] ctk-addons: the `bypass` control how to use it in experiments
-- [ ] ctk-addons: the `sychronization` control how to use it in experiments
-- [ ] how to define steady state hypothesis tolerances in chaostoolkit using ranges and values and dictionaries
-- [ ] how to store chaostoolkit journals on S3 storage location for future access and reporting
+- [x] ctk-addons: the `sychronization` control how to use it in experiments
+- [x] how to define steady state hypothesis tolerances in chaostoolkit using ranges and values and dictionaries
+- [x] how to store chaostoolkit journals on S3 storage location for future access and reporting
 - [ ] talk about the top 5 chaostoolkit plugins if you're not ready to run chaos on production
 - [ ] how to use secrets in a chaostoolkit experiment
 - [ ] Reasons to pick chaostoolkit to get started with chaos engineering
-- [ ] chaostoolkit hypothesis verification strategies explained and when to use them
+- [x] chaostoolkit hypothesis verification strategies explained and when to use them
 - [ ] different ways to fail an experiment in Chaostoolkit (immediately, fail hypothesis, fail method)
-- [ ] how to parametrise chaostoolkit experiments, settings file, variable files, inside experiments
-- [ ] use environment variables in chaostoolkit experiments
-- [ ] experiment safeguards with chaostoolkit: how to bail out of an experiment if the system becomes unstable
+- [x] how to parametrise chaostoolkit experiments, settings file, variable files, inside experiments
+- [x] use environment variables in chaostoolkit experiments
+- [x] experiment safeguards with chaostoolkit: how to bail out of an experiment if the system becomes unstable
 - [ ] how to collect experiment execution results using Reliably cloud (Free account for 1 team member)
 `++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++`
 - [ ] how to get started with chaos engineering even if your production system is not ready
