@@ -3,6 +3,7 @@ layout: post
 title:  "Day 1 - My First Generative Model"
 date:   2023-03-07 8:28:36 +0000
 categories: 100days
+excerpt: ""
 ---
 
 It's official, first of 100 days working on Machine Learning!

@@ -3,6 +3,7 @@ layout: post
 title:  "100 Days of Machine Learning"
 date:   2023-03-06 10:26:36 +0000
 categories: 100days
+excerpt: ""
 ---
 
 As the "100 Days of ..." is very popular these days I've decided to give it a try too. I've been itching to

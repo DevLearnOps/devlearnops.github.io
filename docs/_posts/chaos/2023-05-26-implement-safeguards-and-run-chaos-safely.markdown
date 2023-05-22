@@ -1,14 +1,19 @@
 ---
 layout: post
-title:  "Protecting Your System With Experiments Safeguards"
+title:  "How to Implement Safeguards and Run Chaos Experiments Safely"
 description: |
-    todo> add SEO description metatag
-date:   2023-05-20
+    Experimenting in production has the potential to cause unnecessary customer pain.
+    In this article, we’ll learn how to use safeguards in Chaos Toolkit to immediately 
+    interrupt an experiment execution before it seriously affects the target system.
+date:   2023-05-26
 categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
-# permalink: "/mastering-chaostoolkit-experiment-configuration"
-excerpt: ""
+permalink: "implement-safeguards-and-run-chaos-safely"
+excerpt: |
+    Experimenting in production has the potential to cause unnecessary customer pain.
+    In this article, we’ll learn how to use safeguards in Chaos Toolkit to immediately 
+    interrupt an experiment execution before it seriously affects the target system.
 ---
 
 ## 1. Overview
@@ -17,39 +22,41 @@ excerpt: ""
 >
 > <a href="http://principlesofchaos.org/" target="_blank">principlesofchaos.org</a>
 
-In this short article we'll learn how to use **safeguards** in Chaos Toolkit to immediately interrupt experiments executions before they seriously affect the target system.
+In this article, we'll learn how to use **safeguards** in Chaos Toolkit to immediately interrupt an experiment execution before it seriously affects the target system.
 
-Whether you're running experiments on a production system or you're still experimenting with a test environment, Chaos Toolkit **safeguards** can be incredibly useful to stop experiments as soon as possible.
+Whether you're injecting chaos events on a production system or still experimenting with a test environment, Chaos Toolkit safeguards can be incredibly useful to stop experiments as soon as possible.
 
-## 2. Steady-State Hypothesis vs. Safeguards
+## 2. Safeguards vs Steady-State Hypothesis
 
-Steady-state hypothesis can too be used to bail out of an experiment early. In fact in Chaos Toolkit we can use a verification strategy to check the steady-state of the system continuously and exit as soon as the first verification fails (More on hypothesis strategies in a [previous article](/chaostoolkit-hypothesis-strategies-explained)
+A steady-state hypothesis can also be used to bail out an experiment early. In fact, in Chaos Toolkit, we can use a verification strategy to check the steady state of the system continuously and exit as soon as the first verification fails (More on hypothesis strategies in a [previous article](/chaostoolkit-hypothesis-strategies-explained)
 
-So how are safeguards different than steady state hypothesis?
+So how are safeguards different from a steady-state hypothesis?
 
 #### **Safeguards are experiment controls**
 
-If you're not familiar with the concepts, controls operate outside of the experiment context and can be used to modify the its execution flow (like interrupting the experiment early in this case).
-Because they're not part of the experiment strictly speaking, they can be defined in separate files and activated for more experiments using command line options.
+Controls in Chaos Toolkit operate outside of the experiment context and can be used to modify its execution flow (like interrupting the experiment early in this case).
+Because they're not part of the experiment, they can be defined in separate files and activated for multiple experiments using command line options.
 
 #### **Safeguards can keep an eye on the system as a whole**
 
-While steady-state hypothesis are relavant to the subsystem or service targeted by the experiment, safeguards can define probes to check the system as a whole. For instance, while we simulate a traffic spike for a frontend service, we could use a safeguard to make sure the underlying database CPU is still in check.
+While a steady-state hypothesis is usually relevant to a single service or sub-system, safeguards can define probes to check the system as a whole. For instance, while we simulate a traffic spike on a frontend service, we could use a safeguard to ensure the underlying database CPU is still in check.
 
 ## 3. Using Experiment Safeguards
 
-The **safeguards** control is part of the `chaosaddons` modules so to use it in our experiments we first need to install it:
+The **safeguards** control is part of the `chaosaddons` module, so to use it in our experiments, we first need to install it:
 
 
 ```shell
 pip install -U chaostoolkit-addons
 ```
 
-Then all we need to do is to add our safeguards to the controls section, for example:
+Then all we need to do is add our safeguards to the controls section, for example:
 
 
 {% raw %}
 ```yaml
+# ...
+
 controls:
   # This safeguards control includes two probes:
   - name: "my-experiment-safeguards"
@@ -83,25 +90,27 @@ controls:
               url: "http://localhost:8999/health"
               method: "GET"
               timeout: 2
+
+# ...
 ```
 {% endraw %}
 
-Safeguards are nothing more than a list of probes. Notice how we don't need to know the context of the chaos experiment to understand what the example does. It's clear that we don't want the backend service to be affected in any way and stop as soon as that happens.
+Safeguards are nothing more than a list of probes that verify the system's condition. In the example above, we don't want the backend service to be affected by chaotic events and stop the experiment as soon as that happens.
 
 Probes defined in safeguards can affect the experiment execution in different ways, depending on how we configure them using two attributes `background: bool` and `frequency: float`:
 
 | Attribute | Execution time | Effect |
 |---|---|---|
-| `None` | Blocking, before the experiment begins | When no attributes are set the probe can prevent the experiment from starting |
+| `None` | Blocking, before the experiment begins | When no attributes are set, the probe can prevent the experiment from starting |
 | `frequency:N` | Blocking, runs continuously every *N* seconds | Probe will not stop experiment start but will interrupt the execution on failure |
-| `background:bool` | Non-blocking, runs as soon as possible in the background after the experiment starts | Probe will not prevent the experiment start but can stop execution early |
-| `frequency:N` **and** `background:bool` | Non-blocking, runs continuously in the background every *N* seconds| Just like *frequency* but running activity in the backgound |
+| `background:bool` | Non-blocking, runs as soon as possible in the background after the experiment starts | Probe will not prevent the experiment from starting but can stop execution early |
+| `frequency:N` **and** `background:bool` | Non-blocking, runs continuously in the background every *N* seconds| Just like *frequency* but running activity in the background |
 
 ### 3.1. Block experiments at the start
 
-The most dangerous thing an experiment can do is introducing faults to an unstable system. We can use safeguard probes to block experiments at the start by **not setting the `frequency` and `backgound` attributes**.
+The most dangerous thing a chaos experiment can do is introduce faults to an unstable system. We can use safeguard probes to block experiments at the start by **not setting the `frequency` and `background` attributes**.
 
-According to the table above the probe verification will block the experiment execution until it's done verifying:
+According to the table above, the probe verification will block the experiment execution until it's done verifying:
 
 ```yaml
 controls:
@@ -137,7 +146,7 @@ chaos run --rollback-strategy=always experiment.yaml
 
 ### 3.2. Run safeguards continuously
 
-We can use safeguard to verify the state of the system continuously throughout the experiment execution by defining the **frequency** attribute for a probe:
+We can use safeguards to verify the state of the system continuously throughout the experiment execution by defining the **frequency** attribute for a probe:
 
 ```yaml
 controls:
@@ -159,7 +168,7 @@ controls:
               timeout: 2
 ```
 
-In this example, `frequency: 2` will run a verification every 2 seconds until the end of the experiment. As soon as the verification fails, the experiment will be interrupted:
+In this example, `frequency: 2` will run a verification every 2 seconds until the end of the experiment. As soon as the verification fails, the experiment will be immediately interrupted:
 
 ```shell
 chaos run --rollback-strategy=always experiment.yaml
@@ -171,15 +180,15 @@ chaos run --rollback-strategy=always experiment.yaml
 
 ### 3.3. Background verifications
 
-In Chaos Toolkit experiments the `backgound: bool` option will tell the framework to run the action in a subprocess and allow the rest of the experiment to proceed.
+In Chaos Toolkit experiments, the `background: bool` option will tell the framework to run the action in a subprocess and allow the rest of the steps to proceed concurrently.
 
-It's sensible to use this feature if your verification can take a long time to complete. What "a long time" means entirely depends on the use case: sometimes a 10 seconds wait is acceptable, in other cases it can make or break a test.
+Using this feature is sensible if your safeguard verifications can take a long time to complete. Of course, what qualifies as "a long time" entirely depends on the use case: sometimes a 10 seconds wait is acceptable, in other cases, it can make or break a test.
 
-As a general rule I avoid using background steps as much as possible to keep the execution flow simple and predictable. If I can live with the wait, I'll accept it.
+Generally, I avoid using background steps as much as possible to keep the execution flow simple and predictable. If I can live with the wait, I'll accept it.
 
 ## 4. Reuse Safeguards For Multiple Experiments
 
-Like any other control, safeguards can be defined outside of the experiment file and added to any experiment at run-time using the command-line. Let's see an example.
+Like any other control, safeguards can be defined outside the experiment file and added to existing experiments at run-time using the command line. Let's see an example.
 
 
 We create a new file called `safeguards.yaml` with the following content:
@@ -224,19 +233,19 @@ chaos run \
     experiment.yaml
 ```
 
-For more information on how to apply controls defined outside of experiment templates check out my [previous article](/apply-ctk-controls-globally-with-config-files).
+For more information on how to apply controls defined outside of experiment templates, check out my [previous article](/apply-ctk-controls-globally-s3-bucket-upload).
 
 ## 5. Safeguards In Practice
 
-If you're interested in testing out safeguards for yourself, we'll now reproduce the experiment described in the article.
+If you're interested in testing safeguards for yourself, we'll now reproduce the experiment described in the article.
 
 #### **Run the demo application locally**
 
-First we need to have an application to run our experiment on. You can run a simple application locally with Docker following the steps described <a href="https://github.com/DevLearnOps/tutorials/tree/main/sample-apps/simple-frontend-backend" target="_blank">in the GitHub repo</a>.
+First, we need to have an application to experiment with. You can run my sample frontend-backend application locally with Docker following the steps described <a href="https://github.com/DevLearnOps/tutorials/tree/main/sample-apps/simple-frontend-backend" target="_blank">in the GitHub repo</a>.
 
 #### **Create the experiment file**
 
-Here's the full example of the experiment with safeguards:
+Here's the full example of the experiment including safeguards:
 
 {% raw %}
 ```yaml
@@ -330,7 +339,7 @@ chaos run --rollback-strategy=always experiment.yaml
 
 ## Conclusion
 
-In this article, we learn how to use **safeguards** to monitor the system's state and bail out of an expeirment before it can cause pain for users.
+In this article, we learned how to use **safeguards** to monitor the system's state and interrupt an experiment before it can cause pain for users.
 
 As always, all examples used in this post and more are available
-<a href="https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/" target="_blank">over on GitHub</a>
+<a href="https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/chaostoolkit-experiment-safeguards" target="_blank">over on GitHub</a>

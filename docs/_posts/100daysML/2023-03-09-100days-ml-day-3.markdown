@@ -3,6 +3,7 @@ layout: post
 title:  "Day 3 - Other Applications for LSTM Networks"
 date:   2023-03-09 09:06:14 +0000
 categories: 100days
+excerpt: ""
 ---
 
 Last night I was thinking about how in the very first ML excercise I used a **Recursive Neural Network** to
