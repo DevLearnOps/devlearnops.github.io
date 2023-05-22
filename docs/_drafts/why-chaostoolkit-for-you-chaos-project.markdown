@@ -8,6 +8,7 @@ categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
 # permalink: "/mastering-chaostoolkit-experiment-configuration"
+excerpt: ""
 ---
 
 ## 1. Overview

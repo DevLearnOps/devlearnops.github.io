@@ -9,6 +9,7 @@ categories: "containers"
 tags: docker linux
 author: "Manuel Castellin"
 permalink: "/install-software-alpine-docker-containers"
+excerpt: ""
 ---
 
 ## 1. Overview

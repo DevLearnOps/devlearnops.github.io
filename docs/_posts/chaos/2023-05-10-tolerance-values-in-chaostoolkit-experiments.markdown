@@ -8,6 +8,7 @@ categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
 permalink: "/set-tolerance-values-in-chaostoolkit-experiments"
+excerpt: ""
 ---
 
 ## Table Of Contents

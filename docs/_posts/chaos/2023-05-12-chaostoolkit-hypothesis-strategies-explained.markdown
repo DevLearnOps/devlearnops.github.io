@@ -9,6 +9,7 @@ categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
 permalink: "/chaostoolkit-hypothesis-strategies-explained"
+excerpt: ""
 ---
 
 ## 1. Overview

@@ -5,6 +5,8 @@
 layout: homepage
 title: Home
 order: 1
+description: |
+    A blog for engineers made by engineers.
 ---
 
 ```python
