@@ -396,4 +396,4 @@ In this article, we created a simple Chaos Engineering experiment using ChaosToo
 * Introduce variables and events that modify the system's original state (stop the webservice)
 * Try disprove the hypothesis by looking at differences in the steady state before and after the experiment
 
-A working example of the experiment with the code shown in this article is available <a href="https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/first-chaos-experiment-w-chaostoolkit" target="_blank">over on GitHub</a>
+A working example of the experiment with the code shown in this article is available [over on GitHub](https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/first-chaos-experiment-w-chaostoolkit){:target="_blank"}
