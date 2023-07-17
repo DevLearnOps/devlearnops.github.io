@@ -8,12 +8,17 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+a {
+  color: $primary--8;
+}
+
 /***********************************************
  * Site header
  ***********************************************/
 .site-header {
   background-color: $primary;
   margin-bottom: 32px;
+  padding: 0 8px;
 }
 
 .site-header .wrapper {
@@ -46,7 +51,7 @@ body {
 
 .trigger {
   display: flex;
-  gap: 30px;
+  gap: 24px;
 }
 
 .trigger a {
@@ -85,6 +90,7 @@ label[for="nav-trigger"] {
 .page-content {
   max-width: calc(#{$content-width} + 30px * 2);
   margin: 0 auto;
+  padding: 0 8px;
 }
 .page-content .wrapper {
 }
@@ -99,6 +105,18 @@ article {
 
 .post-meta {
   margin: 24px 0;
+
+  // clashes with post list
+  //padding-left: 24px;
+  //border-left: 1px solid $primary;
+}
+
+.post-content h1 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+.post-content h1:first-child {
+  margin-top: 0;
 }
 
 .post-content h2 {
@@ -109,6 +127,11 @@ article {
   margin-top: 0;
 }
 
+.post-content h3 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
 .post-content p {
   margin-bottom: 16px;
 }
@@ -116,14 +139,45 @@ article {
   margin-bottom: 0;
 }
 
+.post-content img {
+  max-width: 100%;
+}
+
+blockquote {
+  color: $grey--tint-7;
+  margin: 24px 0;
+  border-left: 3px solid $grey--tint-3;
+  padding: 8px 0;
+  padding-left: 32px;
+
+  position: relative;
+}
+blockquote::before {
+  content: '“';
+  display: inline-block;
+  font-size: 64px;
+  text-align: center;
+  background-color: $primary--0;
+
+  position: absolute;
+  top: -10px;
+  left: -13px;
+}
+
 pre {
-  background-color: $grey--tint-1;
+  background-color: $primary--0;
   overflow-x: auto;
   padding: 12px 16px;
   margin-bottom: 16px;
+  border-left: 3px solid $accent;
+}
+
+pre code {
+  padding: 0;
 }
 
 code {
+  background-color: $primary--0;
   padding: 0 8px;
 }
 
@@ -133,8 +187,9 @@ code {
  ***********************************************/
 .site-footer {
   background-color: $grey--tint-8;
+  min-height: 250px;
   color: #fff;
-  padding: 24px 0;
+  padding: 48px 8px;
   margin-top: 64px;
 }
 
@@ -152,6 +207,7 @@ code {
   gap: 24px;
 
   flex-wrap: wrap;
+  align-items: start;
 }
 
 .footer-col {
@@ -160,4 +216,29 @@ code {
 
 .contact-list li {
   list-style-type: none;
+}
+
+.footer-col li svg {
+  width: 16px;
+  height: 16px;
+}
+
+.footer-col a:link,
+.footer-col a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-col a:hover,
+.footer-col a:active {
+  text-decoration: underline;
+}
+
+
+/***********************************************
+ * Components - Table of Contents
+ ***********************************************/
+
+ul {
+  margin-left: 24px;
 }

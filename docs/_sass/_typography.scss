@@ -10,7 +10,7 @@ h1:first-line {
 }
 
 .post-meta {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -22,12 +22,16 @@ h1:first-line {
   font-size: 32px;
 }
 
+blockquote {
+  font-style: italic;
+  font-size: 24px;
+}
+
 pre {
   font-size: 16px;
 }
 
 code {
-  background-color: $grey--tint-1;
   font-size: 18px;
 }
 
