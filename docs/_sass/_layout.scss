@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $grey;
+  font-family: "Open Sans", sans-serif;
+}
+
+/***********************************************
+ * Site header
+ ***********************************************/
+.site-header {
+  background-color: $primary;
+  margin-bottom: 32px;
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: calc(#{$content-width} + 30px * 2);
+  margin: 0 auto;
+}
+
+.site-title {
+  color: #fff;
+  line-height: 52px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.site-title:link,
+.site-title:visited {
+  text-decoration: none;
+}
+
+.site-title:hover,
+.site-title:active {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
+}
+
+
+.trigger {
+  display: flex;
+  gap: 30px;
+}
+
+.trigger a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.trigger a:link,
+.trigger a:visited {
+  text-decoration: none;
+}
+
+.trigger a:hover,
+.trigger a:active {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* TODO
+ * handle navigation on smaller devices
+ */
+.nav-trigger {
+  display: none;
+}
+
+label[for="nav-trigger"] {
+  display: none;
+}
+
+/***********************************************
+ * Page content
+ ***********************************************/
+.page-content {
+  max-width: calc(#{$content-width} + 30px * 2);
+  margin: 0 auto;
+}
+.page-content .wrapper {
+}
+
+article {
+  display: grid;
+  row-gap: 32px;
+
+  // minmax(0, 1fr) is a fix to allow <pre> to stay in max-width
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.post-meta {
+  margin: 24px 0;
+}
+
+.post-content h2 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.post-content h2:first-child {
+  margin-top: 0;
+}
+
+.post-content p {
+  margin-bottom: 16px;
+}
+.post-content p:last-child {
+  margin-bottom: 0;
+}
+
+pre {
+  background-color: $grey--tint-1;
+  overflow-x: auto;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+code {
+  padding: 0 8px;
+}
+
+
+/***********************************************
+ * Page footer
+ ***********************************************/
+.site-footer {
+  background-color: $grey--tint-8;
+  color: #fff;
+  padding: 24px 0;
+  margin-top: 64px;
+}
+
+.site-footer .wrapper {
+  max-width: calc(#{$content-width} + 30px * 2);
+  margin: 0 auto;
+}
+
+.footer-heading {
+  margin-bottom: 24px;
+}
+
+.footer-col-wrapper {
+  display: flex;
+  gap: 24px;
+
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  flex: 1 0 250px;
+}
+
+.contact-list li {
+  list-style-type: none;
+}
