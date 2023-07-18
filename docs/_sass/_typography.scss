@@ -32,13 +32,17 @@ blockquote {
   font-size: $font-size-lg;
 }
 
-pre,
-pre code {
-  font-size: $font-size-sm;
+code {
+  font-size: calc(#{$font-size-md} - 1px);
 }
 
-code {
-  font-size: $font-size-md;
+pre,
+pre code {
+  font-size: calc(#{$font-size-sm} - 1px);
+}
+
+td code {
+  font-size: calc(#{$font-size-sm} - 1px);
 }
 
 strong {
