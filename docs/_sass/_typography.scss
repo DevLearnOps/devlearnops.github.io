@@ -1,5 +1,5 @@
 h1 {
-  font-size: 52px;
+  font-size: $font-size-xxl;
   font-weight: 300;
   letter-spacing: -3px;
   line-height: 1.1;
@@ -9,33 +9,53 @@ h1:first-line {
   font-weight: 600;
 }
 
+h3 {
+  font-weight: 600;
+}
+
 .post-meta {
-  font-size: 16px;
+  font-size: $font-size-sm;
   font-weight: 500;
 }
 
 .post-content {
-  font-size: 20px;
+  font-size: $font-size-md;
+  line-height: 1.4;
 }
 
 .post-content h2 {
-  font-size: 32px;
+  font-size: $font-size-xl;
 }
 
 blockquote {
   font-style: italic;
-  font-size: 24px;
+  font-size: $font-size-lg;
 }
 
-pre {
-  font-size: 16px;
+pre,
+pre code {
+  font-size: $font-size-sm;
 }
 
 code {
-  font-size: 18px;
+  font-size: $font-size-md;
 }
 
 strong {
   color: $accent;
   font-weight: 600;
+}
+
+table thead {
+  text-transform: capitalize;
+  font-size: $font-size-sm;
+}
+
+table tbody {
+  font-size: $font-size-sm;
+  letter-spacing: 0px;
+}
+
+.footer-col {
+  font-size: $font-size-sm;
 }

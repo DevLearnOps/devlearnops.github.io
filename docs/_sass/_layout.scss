@@ -54,20 +54,20 @@ a {
   gap: 24px;
 }
 
-.trigger a {
+.page-link {
   color: #fff;
   font-size: 18px;
   font-weight: 500;
   display: inline-block;
 }
 
-.trigger a:link,
-.trigger a:visited {
+.page-link:link,
+.page-link:visited {
   text-decoration: none;
 }
 
-.trigger a:hover,
-.trigger a:active {
+.page-link:hover,
+.page-link:active {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -81,7 +81,20 @@ a {
 }
 
 label[for="nav-trigger"] {
-  display: none;
+}
+
+@media screen and (min-width: $on-palm) {
+  label[for="nav-trigger"]{
+    display: none;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .page-link {
+    display: inline;
+  }
 }
 
 /***********************************************
@@ -104,11 +117,13 @@ article {
 }
 
 .post-meta {
+  color: $grey--7;
   margin: 24px 0;
+}
 
-  // clashes with post list
-  //padding-left: 24px;
-  //border-left: 1px solid $primary;
+.post-meta-lg {
+  padding-left: 24px;
+  border-left: 1px solid $primary;
 }
 
 .post-content h1 {
@@ -119,17 +134,21 @@ article {
   margin-top: 0;
 }
 
-.post-content h2 {
+h2 {
   margin-top: 24px;
   margin-bottom: 12px;
 }
-.post-content h2:first-child {
+h2:first-child {
   margin-top: 0;
 }
 
-.post-content h3 {
+h3 {
   margin-top: 24px;
   margin-bottom: 12px;
+}
+
+h4 {
+  margin-bottom: 8px;
 }
 
 .post-content p {
@@ -144,9 +163,9 @@ article {
 }
 
 blockquote {
-  color: $grey--tint-7;
+  color: $grey--7;
   margin: 24px 0;
-  border-left: 3px solid $grey--tint-3;
+  border-left: 3px solid $grey--3;
   padding: 8px 0;
   padding-left: 32px;
 
@@ -162,6 +181,22 @@ blockquote::before {
   position: absolute;
   top: -10px;
   left: -13px;
+}
+
+table {
+  margin: 16px 0;
+}
+thead {
+  background-color: $grey--3;
+}
+th {
+  padding: 8px 12px;
+}
+tr:nth-child(2n) {
+  background-color: $grey--1;
+}
+td {
+  padding: 8px 12px;
 }
 
 pre {
@@ -181,12 +216,18 @@ code {
   padding: 0 8px;
 }
 
+.post-emphasis {
+  margin: 32px 0;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: 2px solid $grey--6;
+}
 
 /***********************************************
  * Page footer
  ***********************************************/
 .site-footer {
-  background-color: $grey--tint-8;
+  background-color: $grey--8;
   min-height: 250px;
   color: #fff;
   padding: 48px 8px;
@@ -234,11 +275,10 @@ code {
   text-decoration: underline;
 }
 
-
 /***********************************************
  * Components - Table of Contents
  ***********************************************/
 
-ul {
+.post-content ul {
   margin-left: 24px;
 }

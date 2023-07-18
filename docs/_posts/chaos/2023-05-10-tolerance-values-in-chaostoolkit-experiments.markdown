@@ -70,7 +70,9 @@ If you wish to follow along with the steps described in this article and test it
 
 ### 3.1. Required ChaosToolkit modules
 
-| If you don't have ChaosToolkit installed in your system, follow the installation steps described in the article [Your First Chaos Engineering Experiment With Chaostoolkit](/first-chaos-experiment-with-chaostoolkit#4-prepare-the-environment) first.
+<div class="post-emphasis">
+  If you don't have ChaosToolkit installed in your system, follow the installation steps described in the article <a href="/first-chaos-experiment-with-chaostoolkit#4-prepare-the-environment">Your First Chaos Engineering Experiment With Chaostoolkit</a> first.
+</div>
 
 I prepared a custom ChaosToolkit module to demonstrate some tolerance verification features, so let's install it from the GitHub repository with the following command:
 
@@ -261,7 +263,10 @@ steady-state-hypothesis:
 
 In this example, because we used **more than two** values in the sequence, the tolerance will be met if the response mime type matches any of the listed options.
 
-| Sometimes, the fact that you need three or more options to use an exact match with a sequence can be a limitation. For instance: if you only need to match either *text/plain* or *text/html*, you can work around the problem by including a third option that is either impossible or `null`.
+<div class="post-emphasis">
+  Sometimes, the fact that you need three or more options to use an exact match with a sequence can be a limitation.
+  For instance: if you only need to match either <em>text/plain</em> or <em>text/html</em>, you can work around the problem by including a third option that is either impossible or <code>null</code>.
+</div>
 
 
 ### 5.3. Ranges
