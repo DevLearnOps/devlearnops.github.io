@@ -28,7 +28,9 @@ layout: default
       </p>
   </header>
 
-  {% include chaos-starter-cta.html %}
+  {% if page.tags contains "chaos-engineering" %}
+    {% include chaos-starter-cta.html %}
+  {% endif %}
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
