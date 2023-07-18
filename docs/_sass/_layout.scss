@@ -110,7 +110,7 @@ label[for="nav-trigger"] {
 
 article {
   display: grid;
-  row-gap: 32px;
+  row-gap: 24px;
 
   // minmax(0, 1fr) is a fix to allow <pre> to stay in max-width
   grid-template-columns: minmax(0, 1fr);
@@ -281,4 +281,40 @@ code {
 
 .post-content ul {
   margin-left: 24px;
+}
+
+/***********************************************
+ * Components - Call to action
+ ***********************************************/
+.call-to-action {
+  background-color: $primary--0;
+  padding-top: 24px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 12px;
+  justify-items: center;
+}
+
+.cta-title {
+  margin: 0;
+  padding: 0 8px;
+}
+
+.call-to-action p {
+  padding: 0 8px;
+}
+
+.call-to-action button {
+  display: inline-block;
+  background-color: $accent;
+  color: #fff;
+  width: 100%;
+  line-height: 54px;
+  border: 3px solid $accent;
+}
+.call-to-action button:hover {
+  background-color: #fff;
+  color: $accent;
+  cursor: pointer;
 }

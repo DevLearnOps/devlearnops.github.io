@@ -59,3 +59,17 @@ table tbody {
 .footer-col {
   font-size: $font-size-sm;
 }
+
+.cta-title {
+  text-transform: capitalize;
+  text-align: center;
+}
+.call-to-action p {
+  font-size: $font-size-lg;
+  text-align: center;
+}
+.call-to-action button {
+  font-size: $font-size-lg;
+  font-weight: 600;
+  text-transform: uppercase;
+}
