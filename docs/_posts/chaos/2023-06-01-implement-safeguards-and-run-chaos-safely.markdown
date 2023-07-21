@@ -26,6 +26,8 @@ In this article, we'll learn how to use **safeguards** in Chaos Toolkit to immed
 
 Whether you're injecting chaos events on a production system or still experimenting with a test environment, Chaos Toolkit safeguards can be incredibly useful to stop experiments as soon as possible.
 
+{% include cta/chaos-starter-pack.html %}
+
 ## 2. Safeguards vs Steady-State Hypothesis
 
 A steady-state hypothesis can also be used to bail out an experiment early. In fact, in Chaos Toolkit, we can use a verification strategy to check the steady state of the system continuously and exit as soon as the first verification fails (More on hypothesis strategies in a [previous article](/chaostoolkit-hypothesis-strategies-explained)
@@ -337,7 +339,7 @@ To run the experiment:
 chaos run --rollback-strategy=always experiment.yaml
 ```
 
-## Conclusion
+## 6. Conclusion
 
 In this article, we learned how to use **safeguards** to monitor the system's state and interrupt an experiment before it can cause pain for users.
 

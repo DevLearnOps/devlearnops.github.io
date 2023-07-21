@@ -118,7 +118,9 @@ As a result, a new `venv` directory should appear in the current path. To activa
 # venv/Scripts/activate.bat
 ```
 
-| If you close your terminal or open a new terminal window at any point, remember to activate the virtual environment again by running the command above.
+<div class="post-emphasis">
+  If you close your terminal or open a new terminal window at any point, remember to activate the virtual environment again by running the command above.
+</div>
 
 Now we can install ChaosToolkit with Python Pip:
 
@@ -188,7 +190,10 @@ steady-state-hypothesis:
         timeout: 3
 ```
 
-| Be careful when you modify the template and remove the `[]` where you replace values. You'll start getting strange errors otherwise... It happened to the author many times 😅
+<div class="post-emphasis">
+  Be careful when you modify the template and remove the <code>[]</code> where you replace values.
+  You'll start getting strange errors otherwise... It happened to the author many times 😅
+</div>
 
 We just added a new **probe** to the *steady-state-hypothesis* to verify the webserver is running. Let's break down how it works:
 

@@ -8,7 +8,7 @@ services:
       - "4000:4000"
     environment:
       HOST: '0.0.0.0'
-      OPTS: '--drafts --future'
-      #OPTS: ''
+      #OPTS: '--drafts --future'
+      OPTS: ''
     volumes:
       - "$PWD/docs:/site"

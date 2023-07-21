@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+/*
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
+// Open Sans import
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,800;1,300;1,400;1,500;1,600;1,800&display=swap');
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+@import
+  "variables",
+  "layout",
+  "typography",
+  "code_typography"
+  ;

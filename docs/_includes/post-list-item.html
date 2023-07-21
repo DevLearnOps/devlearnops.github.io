@@ -1,0 +1,15 @@
+<a class="post-list-item" href="{{ post.url | relative_url }}">
+  {%- if post.image -%}
+    <img class="post-list-image" src="{{ post.image | relative_url }}" alt="cover image"/>
+  {%- else -%}
+    {%- assign postImage = "/assets/images/default-cover.jpg" -%}
+    <img class="post-list-image" src="{{ postImage | relative_url }}" alt="cover image"/>
+  {%- endif -%}
+  <div class="post-list-item-content">
+    <h3 class="post-list-title">{{ post.title | escape }}</h3>
+    <span class="post-meta post-meta--sm">{{ post.date | date: date_format }}</span>
+    {%- if site.show_excerpts -%}
+      <span class="post-excerpt">{{ post.excerpt }}</span>
+    {%- endif -%}
+  </div>
+</a>

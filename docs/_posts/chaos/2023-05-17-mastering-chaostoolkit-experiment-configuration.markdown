@@ -61,7 +61,10 @@ method:
 
 This template contains hardcoded values for all its probes and actions arguments, making it impossible to reuse it without modifying its content. Let's fix that right away!
 
-| I always make sure you can try all the examples in the article yourself. If you're interested, the full code examples and setup instructions are available <a href="https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/mastering-chaostoolkit-experiment-configuration" target="_blank">over on GitHub</a>
+<div class="post-emphasis">
+    I always make sure you can try all the examples in the article yourself.
+    If you're interested, the full code examples and setup instructions are available <a href="https://github.com/DevLearnOps/tutorials/tree/main/chaos-engineering/mastering-chaostoolkit-experiment-configuration" target="_blank">over on GitHub</a>
+</div>
 
 ## 3. Inline Configuration
 
@@ -149,7 +152,10 @@ configuration:
   stress_users: 50
 ```
 
-| ChaosToolkit can work with configuration files, just like experiments, in either **JSON** or **YAML** format. I prefer the latter as it's more compact and allows comments for better documentation.
+<div class="post-emphasis">
+  ChaosToolkit can work with configuration files, just like experiments, in either <strong>JSON</strong> or <strong>YAML</strong> format.
+  I prefer the latter as it's more compact and allows comments for better documentation.
+</div>
 
 We can tell ChaosToolkit to use the **dev-overrides.yaml** file when we're running the experiment in our **DEV** environment and execute the *stress-endpoint* action for longer and with a higher number of simulated users. To use variables override from the external configuration file, we use this command:
 
@@ -181,7 +187,9 @@ chaos run \
 # ...
 ```
 
-| When using multiple override **files order counts**! Make sure you specify override files **from the least specific to the more specific**.
+<div class="post-emphasis">
+  When using multiple override <strong>files order counts</strong>! Make sure you specify override files <strong>from the least specific to the more specific</strong>.
+</div>
 
 ## 5. Command-Line Variables
 
