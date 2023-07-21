@@ -4,5 +4,6 @@
 
 layout: archive
 title: Archive
+permalink: /posts-archive/
 order: 2
 ---
