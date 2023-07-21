@@ -53,17 +53,13 @@ a {
   text-decoration-thickness: 2px;
 }
 
-
-.trigger {
-  display: flex;
-  gap: 24px;
-}
-
 .page-link {
   color: #fff;
   font-size: 18px;
   font-weight: 500;
   display: inline-block;
+  padding: 12px 24px;
+  border-bottom: 1px solid $grey--6;
 }
 
 .page-link:link,
@@ -78,14 +74,32 @@ a {
   text-underline-offset: 3px;
 }
 
-/* TODO
- * handle navigation on smaller devices
- */
+.trigger {
+  display: none;
+}
+
+.trigger.show-pane{
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  align-content: start;
+  row-gap: 0;
+  position: fixed;
+  top: $site-nav-height;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: $grey--7;
+}
+
 .nav-trigger {
   display: none;
 }
 
 label[for="nav-trigger"] {
+  stroke: #fff;
+  fill: #fff;
+  margin-right: 8px;
 }
 
 @media screen and (min-width: $on-palm) {
@@ -99,6 +113,26 @@ label[for="nav-trigger"] {
 
   .page-link {
     display: inline;
+    padding: 0;
+    border: 0;
+  }
+
+  .trigger,
+  .trigger.show-pane {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    align-content: stretch;
+    gap: 24px;
+
+    top: unset;
+    left: unset;
+    width: unset;
+    height: unset;
+    row-gap: unset;
+    position: unset;
+    background-color: unset;
+    grid-template-columns: unset;
   }
 }
 
