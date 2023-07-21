@@ -344,6 +344,14 @@ code {
   margin-top: 40px;
 }
 
+.post-list-item-content {
+  padding: 12px 24px;
+}
+.post-list-image {
+  height: 142px;
+  width: 100%;
+  border-radius: $border-radius-md $border-radius-md 0 0;
+}
 .post-list-item {
   position: relative;
   display: block;
@@ -352,9 +360,8 @@ code {
   color: $grey;
   background-color: #fff;
   text-decoration: none;
-  padding: 12px 24px;
   min-height: 240px;
-  max-width: 300px;
+  max-width: 320px;
 }
 .post-list-item:link::after,
 .post-list-item:visited::after {
