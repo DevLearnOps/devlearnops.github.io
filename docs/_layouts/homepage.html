@@ -16,16 +16,7 @@ layout: default
     <div class="post-list-container">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
       {%- for post in site.posts limit:15 -%}
-      <a class="post-list-item" href="{{ post.url | relative_url }}">
-        <img class="post-list-image" src="/assets/images/default-cover.jpg" alt="cover image"/>
-        <div class="post-list-item-content">
-          <h3 class="post-list-title">{{ post.title | escape }}</h3>
-          <span class="post-meta post-meta--sm">{{ post.date | date: date_format }}</span>
-          {%- if site.show_excerpts -%}
-            <span class="post-excerpt">{{ post.excerpt }}</span>
-          {%- endif -%}
-        </div>
-      </a>
+        {% include post-list-item.html %}
       {%- endfor -%}
     </div>
   </div>

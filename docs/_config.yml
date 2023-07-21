@@ -33,6 +33,7 @@ google_analytics: G-L9TBH7V28S
 
 # Build settings
 theme: minima
+cta_enabled: false
 show_excerpts: true
 plugins:
   - jekyll-feed
