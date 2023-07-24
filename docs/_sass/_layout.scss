@@ -224,6 +224,7 @@ blockquote::before {
 table {
   margin: 16px 0;
   border: 1px solid $grey--3;
+  width: 100%;
 }
 thead {
   background-color: $grey--3;
