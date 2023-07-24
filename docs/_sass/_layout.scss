@@ -79,11 +79,11 @@ a {
 }
 
 .trigger.show-pane{
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: start;
-  align-content: start;
-  row-gap: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+  gap: 0;
   position: fixed;
   top: $site-nav-height;
   left: 0;
@@ -120,6 +120,7 @@ label[for="nav-trigger"] {
   .trigger,
   .trigger.show-pane {
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     align-items: stretch;
     align-content: stretch;
@@ -129,10 +130,8 @@ label[for="nav-trigger"] {
     left: unset;
     width: unset;
     height: unset;
-    row-gap: unset;
     position: unset;
     background-color: unset;
-    grid-template-columns: unset;
   }
 }
 
@@ -446,4 +445,46 @@ h3.post-list-title {
   font-size: calc(#{$font-size-sm} - 2px);
   font-weight: 300;
   line-height: 1.27;
+}
+
+/***********************************************
+ * Related posts
+ ***********************************************/
+.related {
+  width: 100%;
+}
+
+.related-title span {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: calc(#{$font-size-sm} - 2px);
+  white-space: nowrap;
+
+  background-color: $primary;
+  border-radius: 20px;
+  padding: 8px 16px;
+
+}
+
+.related-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.related-title::before {
+  content: "";
+  display: inline-block;
+  background-color: $primary;
+  height: 2px;
+  width: 100%;
+}
+.related-title::after {
+  content: "";
+  display: inline-block;
+  background-color: $primary;
+  height: 2px;
+  width: 100%;
 }

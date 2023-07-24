@@ -5,7 +5,6 @@
 layout: default
 title: Chaos
 order: 2
-published: false
 permalink: /chaos-starter-pack/
 description: |
     Test

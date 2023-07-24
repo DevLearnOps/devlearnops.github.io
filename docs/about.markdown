@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-order: 3
+order: 4
 permalink: /about/
 ---
 
