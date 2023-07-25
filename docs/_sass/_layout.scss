@@ -12,6 +12,15 @@ a {
   color: $primary--8;
 }
 
+
+/***********************************************
+ * Generics
+ ***********************************************/
+.flex-container {
+  display: flex;
+  gap: 16px;
+}
+
 /***********************************************
  * Site header
  ***********************************************/
@@ -359,13 +368,6 @@ code {
   background-color: #fff;
   color: $accent;
   cursor: pointer;
-}
-
-.landing-wrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  row-gap: 32px;
 }
 
 /***********************************************
