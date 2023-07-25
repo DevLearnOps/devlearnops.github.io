@@ -1,17 +1,30 @@
 ---
 layout: page
 title: About
-order: 3
+order: 4
 permalink: /about/
 ---
 
-## Hi, I'm Manuel 👋
+Hello! My name is Manuel and welcome to **DevLearnOps** 🚀
 
-Hello! My name is Manuel and welcome to the **DevLearnOps** blog 🚀
+DevLearnOps helps developers explore the world of DevOps engineering
+and learn about many different topics and technologies one article at a time.
 
-I'm a software engineer by trade and 4 years ago I decided to change my career and become a DevOps and systems engineer.
+## About Myself
+I'm a software engineer by trade and a few years ago I found my passion for Linux, automation and cloud engineering so I decided to learn some new skills and became a DevOps and systems engineer.
 
-I work full time as a Chaos engineer these days and in my spare time I like collaborating in cool OpenSource projects, blog about DevOps and create courses to teach fellow developers how to get started with Linux, containers, infrastructure as code, build automation and much more!
+I hope this blog can help any fellow developer interested in learning this fantastic trade and help them transition to their dream job, or simply stay on top of new technologies.
+
+Today, I work full time as a Chaos Engineer and in my spare time I like collaborating in cool OpenSource projects like [ChaosToolkit](https://chaostoolkit.org){:target="_blank"},
+blog about DevOps and studying the fascinating world of Machine Learning.
+
+## Chaos Engineering
+
+I spend large part of the day designing and running Chaos experiments against cloud applications to find new ways of building stable and reliable systems.
+
+If you're interested in this topic, here at DevLearnOps we're working on a **Chaos Engineering Starter Pack for AWS** to help teams implement chaos engineering
+practices using OpenSource tools. Find out more in the [Chaos Engineering](/chaos-starter-pack/) section of the blog.
+
 
 ## Follow my work on
 

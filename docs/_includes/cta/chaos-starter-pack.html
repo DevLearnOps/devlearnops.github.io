@@ -1,13 +1,34 @@
 {%- if site.cta_enabled -%}
-<aside class="call-to-action">
+{%- if page.tags contains "chaos-engineering" -%}
+<aside class="call-to-action" style="display: none;">
   <h2 class="cta-title">
     Get started with chaos engineering fast
     <span class="cta-icon">🚀</span>
   </h2>
   <p>
     Implement chaos engineering on AWS today!
-    Download the <br/><strong>ChaosToolkit Starter Pack AWS</strong>
+    Download the <br/><strong>ChaosToolkit Starter Pack for AWS</strong>
   </p>
-  <button onclick="location.href = '/chaos.html';">Download Now</button>
+  {%- if cta_text -%}
+    <button onclick="location.href = '/chaos-starter-pack/';">{{ cta_text }}</button>
+  {%- else -%}
+    <button onclick="location.href = '/chaos-starter-pack/';">Discover More</button>
+  {%- endif -%}
 </aside>
+
+<script>
+  $(document).ready(function() {
+    let placeholders = $('.cta-placeholder');
+    if (placeholders !== undefined && placeholders.length > 0) {
+        $('aside.call-to-action').replaceAll(placeholders);
+    } else {
+      h2Titles = $('.post-content h2');
+      if (h2Titles.length > 0) {
+        $('aside.call-to-action').insertBefore(h2Titles[1]);
+      }
+    }
+    $('aside.call-to-action').show();
+  });
+</script>
+{%- endif -%}
 {%- endif -%}

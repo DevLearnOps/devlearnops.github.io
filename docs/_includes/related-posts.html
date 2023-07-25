@@ -1,0 +1,42 @@
+<aside class="related">
+  <div class="related-title">
+    <span>related posts</span>
+  </div>
+
+  {% assign maxRelated = site.max_related %}
+  {% assign maxRelatedCounter = 0 %}
+  <div class="post-list-container">
+
+  {% for post in site.posts %}
+    {% assign sameTagCount = 0 %}
+
+    {% if post.url != page.url %}
+      {% for tag in post.tags %}
+        {% if page.tags contains tag %}
+          {% assign sameTagCount = sameTagCount | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+
+    {% if sameTagCount >= 1 %}
+      {% include post-list-item.html %}
+
+      {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+      {% if maxRelatedCounter >= maxRelated %}
+          {% break %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  </div>
+
+</aside>
+
+<script>
+  $(document).ready(function() {
+    let postListElements = $('.post-list-item');
+    if (postListElements.length <= 0) {
+      $('aside.related').hide();
+    }
+  });
+</script>

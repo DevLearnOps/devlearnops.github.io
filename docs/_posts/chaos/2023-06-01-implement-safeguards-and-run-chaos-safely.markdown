@@ -26,7 +26,7 @@ In this article, we'll learn how to use **safeguards** in Chaos Toolkit to immed
 
 Whether you're injecting chaos events on a production system or still experimenting with a test environment, Chaos Toolkit safeguards can be incredibly useful to stop experiments as soon as possible.
 
-{% include cta/chaos-starter-pack.html %}
+<div class="cta-placeholder">&nbsp;</div>
 
 ## 2. Safeguards vs Steady-State Hypothesis
 

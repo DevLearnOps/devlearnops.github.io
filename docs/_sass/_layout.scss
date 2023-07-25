@@ -12,6 +12,15 @@ a {
   color: $primary--8;
 }
 
+
+/***********************************************
+ * Generics
+ ***********************************************/
+.flex-container {
+  display: flex;
+  gap: 16px;
+}
+
 /***********************************************
  * Site header
  ***********************************************/
@@ -79,11 +88,11 @@ a {
 }
 
 .trigger.show-pane{
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: start;
-  align-content: start;
-  row-gap: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+  gap: 0;
   position: fixed;
   top: $site-nav-height;
   left: 0;
@@ -120,6 +129,7 @@ label[for="nav-trigger"] {
   .trigger,
   .trigger.show-pane {
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     align-items: stretch;
     align-content: stretch;
@@ -129,10 +139,8 @@ label[for="nav-trigger"] {
     left: unset;
     width: unset;
     height: unset;
-    row-gap: unset;
     position: unset;
     background-color: unset;
-    grid-template-columns: unset;
   }
 }
 
@@ -187,6 +195,7 @@ h3 {
 }
 
 h4 {
+  margin-top: 18px;
   margin-bottom: 8px;
 }
 
@@ -225,6 +234,7 @@ blockquote::before {
 table {
   margin: 16px 0;
   border: 1px solid $grey--3;
+  width: 100%;
 }
 thead {
   background-color: $grey--3;
@@ -243,7 +253,7 @@ pre {
   background-color: $primary--0;
   overflow-x: auto;
   padding: 12px 16px;
-  margin-bottom: 16px;
+  margin: 20px 0;
   border-left: 3px solid $accent;
 }
 
@@ -266,6 +276,13 @@ code {
 /***********************************************
  * Page footer
  ***********************************************/
+.site-footer .svg-icon {
+  stroke: #fff;
+  fill: #fff;
+  width: 16px;
+  height: 16px;
+}
+
 .site-footer {
   background-color: $grey--8;
   min-height: 250px;
@@ -295,13 +312,8 @@ code {
   flex: 1 0 250px;
 }
 
-.contact-list li {
+.footer-col li {
   list-style-type: none;
-}
-
-.footer-col li svg {
-  width: 16px;
-  height: 16px;
 }
 
 .footer-col a:link,
@@ -319,8 +331,17 @@ code {
  * Components - Table of Contents
  ***********************************************/
 
-.post-content ul {
+.post-content ul,
+.post-content ol {
   margin-left: 24px;
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+.post-content li {
+  margin-bottom: 6px;
+}
+.post-content li:last-child {
+  margin-bottom: 0;
 }
 
 /***********************************************
@@ -353,19 +374,11 @@ code {
   color: #fff;
   width: 100%;
   line-height: 54px;
-  border: 3px solid $accent;
-}
-.call-to-action button:hover {
-  background-color: #fff;
-  color: $accent;
+  border: none;
   cursor: pointer;
 }
-
-.landing-wrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  row-gap: 32px;
+.call-to-action button:hover {
+  background-color: darken($accent, 8%);
 }
 
 /***********************************************
@@ -446,4 +459,46 @@ h3.post-list-title {
   font-size: calc(#{$font-size-sm} - 2px);
   font-weight: 300;
   line-height: 1.27;
+}
+
+/***********************************************
+ * Related posts
+ ***********************************************/
+.related {
+  width: 100%;
+}
+
+.related-title span {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: calc(#{$font-size-sm} - 2px);
+  white-space: nowrap;
+
+  background-color: $primary;
+  border-radius: 20px;
+  padding: 8px 16px;
+
+}
+
+.related-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.related-title::before {
+  content: "";
+  display: inline-block;
+  background-color: $primary;
+  height: 2px;
+  width: 100%;
+}
+.related-title::after {
+  content: "";
+  display: inline-block;
+  background-color: $primary;
+  height: 2px;
+  width: 100%;
 }

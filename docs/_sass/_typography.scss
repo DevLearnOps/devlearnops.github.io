@@ -13,6 +13,11 @@ h3 {
   font-weight: 600;
 }
 
+h4 {
+  font-weight: 600;
+  color: $accent;
+}
+
 .post-meta--lg {
   font-size: $font-size-sm;
   font-weight: 500;
@@ -46,7 +51,7 @@ td code {
 }
 
 strong {
-  color: $accent;
+  //color: $accent;
   font-weight: 600;
 }
 
