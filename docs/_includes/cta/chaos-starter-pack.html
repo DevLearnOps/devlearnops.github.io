@@ -1,4 +1,5 @@
 {%- if site.cta_enabled -%}
+{%- if page.tags contains "chaos-engineering" -%}
 <aside class="call-to-action">
   <h2 class="cta-title">
     Get started with chaos engineering fast
@@ -11,7 +12,22 @@
   {%- if cta_text -%}
     <button onclick="location.href = '/chaos-starter-pack/';">{{ cta_text }}</button>
   {%- else -%}
-    <button onclick="location.href = '/chaos/starter-pack/';">Download Now</button>
+    <button onclick="location.href = '/chaos-starter-pack/';">Discover More</button>
   {%- endif -%}
 </aside>
+
+<script>
+  $(document).ready(function() {
+    let placeholders = $('.cta-placeholder');
+    if (placeholders !== undefined && placeholders.length > 0) {
+        $('aside.call-to-action').replaceAll(placeholders);
+    } else {
+      h2Titles = $('.post-content h2');
+      if (h2Titles.length > 0) {
+        $('aside.call-to-action').insertBefore(h2Titles[1]);
+      }
+    }
+  });
+</script>
+{%- endif -%}
 {%- endif -%}
