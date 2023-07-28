@@ -3,7 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: homepage
-title: Home
+title: Blog
 order: 1
 description: |
     A blog for engineers made by engineers.

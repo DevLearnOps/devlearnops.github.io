@@ -4,7 +4,7 @@ title: Chaos Engineering
 order: 2
 permalink: /chaos-starter-pack/
 description: |
-    Test
+    TODO
 ---
 
 <div class="landing-wrapper">
