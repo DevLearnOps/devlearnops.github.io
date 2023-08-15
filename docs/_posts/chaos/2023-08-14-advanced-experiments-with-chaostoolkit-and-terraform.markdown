@@ -14,25 +14,25 @@ excerpt: >-
 
 ## 1. Overview
 
-In this article we'll learn how to use the **chaostoolkit-terraform** extension to deploy supporting resources for our chaos experiments.
+In this article, we'll learn how to use the **chaostoolkit-terraform** extension to deploy supporting resources for our chaos experiments.
 
 Most people, myself included, learned about Chaos Engineering from some article online talking about tech giants like Netflix or Google building reliable services by randomly terminating
 instances on their production accounts.
 
-This sounds simple enough, but as soon as you dig a bit deeper you'll find that orchestrating an experiment
+This sounds simple enough, but as soon as you dig a bit deeper, you'll find that orchestrating an experiment
 often requires a lot more thought, planning and preparation.
 
-**One key aspect of running advanced experiments against live systems, is creating and maintaining supporting resources for chaos events**. These resources could be, for instance, HTTP proxies to simulate faulty network connections, an EC2 instance that generates synthetic user traffic or even a whole replica of a service.
+**One key aspect of running advanced experiments against live systems is creating and maintaining supporting resources for chaotic events**. These resources could be, for instance, HTTP proxies to simulate faulty network connections, an EC2 instance that generates synthetic user traffic or even a whole replica of a service.
 
 
 ## 2. ChaosToolkit + Terraform = ❤️
 
 Tools like [Terraform][]{:target="_blank"} are designed specifically for this purpose: **create and maintain infrastructure resources using code**.
 
-The [chaostoolkit-terraform][]{:target="_blank"} module, allows us to extend Chaos Toolkit's functionality by deploying an infrastructure template at the start
+The [chaostoolkit-terraform][]{:target="_blank"} module allows us to extend Chaos Toolkit's functionality by deploying an infrastructure template at the start
 of the experiment and tear it down after it is finished.
 
-This feature is useful in many scenarios. To name a few:
+This feature is helpful in many scenarios. To name a few:
 
 #### Create supporting resources for the experiment
 
@@ -44,25 +44,25 @@ Being able to create resources before an experiment execution opens up many poss
 
 Services and resources on production accounts are not always safe to attack with chaos experiments, especially if we simulate destructive actions like deleting databases or storage volumes.
 
-**If data loss is not an acceptable side-effect for your experiment, how about attacking a replica?** Often you can validate experiment hypothesis just as well by experimenting
+**If data loss is not an acceptable side-effect for your experiment, how about attacking a replica?** Often, you can validate the experiment hypothesis just as well by experimenting
 on a copy.
 
 #### Deploy a "control group" to measure the effects of an attack
 
-The use of a **control group** is a pillar of [the scientific method][]{:target="_blank"}. Researchers use them to test the effectiveness of new drugs by administering treatments to a subset of the population called *experimental group* and a placebo to a second subset called the *control group*.
+The use of a **control group** is a pillar of [the scientific method][]{:target="_blank"}. Researchers use them to test the effectiveness of new drugs by administering treatments to a subset of the population called the *experimental group* and a placebo to a second subset called the *control group*.
 
-In chaos engineering we can employ the same strategy by deploying two copies of the same resource and only inject faults to one of them. We can then measure how the chaos variable affects our system by comparing the differences between the experimental and control group.
+In chaos engineering, we can employ the same strategy by deploying two copies of the same resource and only injecting faults into one of them. We can then measure how the chaos variable affects our system by comparing the differences between the experimental and control group.
 
 
 ## 3. Benefits
 
-It's true, you don't need fancy plugins to create some resources for experiments. We could do it manually if it's just a one-off use like for a Chaos Game Day, or maybe deploy them once with the rest of the infrastructure and never destroy them.
+It's true, you don't need fancy plugins to create some resources for experiments. We could do it manually if it's just a one-off use like for a Chaos Game Day, or deploy them once with the rest of the infrastructure and never destroy them.
 
-Though, I strongly believe there are several benefits in using **chaostoolkit-terraform** to manage resource creation in the context of the experiment instead:
+Though, I firmly believe there are several benefits in using **chaostoolkit-terraform** to manage resource creation in the context of the experiment instead:
 
 * **Cost saving**: supporting resources only exist for the duration of the experiment to minimize infrastructure cost
-* **Security**: chaos experiments often need higher privileges to be able to introduce faults, imagine the damage a hacker could do if we leave those resource around!
-* **Reusability**: if the organization already uses Terraform we can reuse existing modules and share the new ones we create, speeding up development
+* **Security**: chaos experiments often need higher privileges to be able to introduce faults. Imagine the damage a hacker could do if we leave those resources around!
+* **Reusability**: if the organization already uses Terraform, we can reuse existing modules and share the new ones we create, speeding up development
 * **Zero touch operations**: no human interaction is necessary to run experiments. Verifications are truly repeatable and with no human error.
 
 <div class="cta-placeholder"></div>
@@ -70,11 +70,11 @@ Though, I strongly believe there are several benefits in using **chaostoolkit-te
 
 ## 4. How To Manage Resources With ChaosToolkit-Terraform
 
-We'll now learn how we can use the **chaostoolkit-terraform** module to automatically deploy the resources we need for our chaos experiments.
+We'll now learn how to use the **chaostoolkit-terraform** module to deploy the resources we need for our chaos experiments automatically.
 
 In this example, we'll create an experiment to verify that a Docker container always restarts upon failure if the `restart=always` option is set.
 
-First let's define the chaos experiment in Chaos Toolkit. Create new file called **experiment.yaml** with the following content:
+First, let's define the chaos experiment in Chaos Toolkit. Create a new file called **experiment.yaml** with the following content:
 
 
 ```yaml
@@ -135,7 +135,7 @@ chaos run experiment.yaml
 # [INFO] Experiment ended with status: completed
 ```
 
-Nice! Now that the experiment is working correctly, let's cleanup the *webserver* container we created manually and use Terraform to create it instead:
+Nice! Now that the experiment is working correctly, let's clean up the *webserver* container and use Terraform to create it instead:
 
 ```shell
 docker stop webserver
@@ -144,7 +144,7 @@ docker rm webserver
 
 ## 5. Define Infrastructure Using Terraform
 
-We'll now create a new Terraform template that will run the *webserver* container for us before the experiment starts.
+We'll now create a new Terraform template to run the *webserver* container for us before the experiment starts.
 
 Let's create a new file called `main.tf` and add the following infrastructure code:
 
@@ -184,15 +184,15 @@ resource "docker_container" "nginx" {
 
 #### Docker Provider on Windows
 
-Unfortunately if you are trying to replicate this experiment on Windows the `unix:///var/run/docker.sock` socket will not be available.
+Unfortunately, if you are trying to replicate this experiment on Windows, the `unix:///var/run/docker.sock` socket will not be available.
 
-No worries, though, you can still use the Docker provider with the TCP connection. You just need to follow a couple of additional steps.
+No worries, though. You can still use the Docker provider with the TCP connection. You just need to follow a couple of additional steps.
 
 First, we need to enable the *Expose daemon on tcp://localhost:2375 without TLS* option from the Docker configuration. Navigate to **Docker Settings > General**, enable the flag and click **Apply & Restart**.
 
 ![Enable tcp without TLS Docker](/assets/images/posts/intro-to-chaostoolkit-terraform-2.jpg)
 
-Second, you need to change the Docker provider definition in the **main.tf** file to use the TCP connection instead:
+Second, you must change the Docker provider definition in the **main.tf** file to use the TCP connection instead:
 
 ```terraform
 # ./main.tf  on Windows
@@ -210,7 +210,7 @@ That's it! Now back to it.
 
 Let's see if the infrastructure template works by applying it ourselves first.
 
-Make sure your shell's working directory is the same location as the *main.tf* file and run the following commands:
+Make sure your shell's working directory is in the same location as the *main.tf* file and run the following commands:
 
 ```shell
 terraform init
@@ -226,7 +226,7 @@ terraform apply
 #   Enter a value: -> "yes"
 ```
 
-When asked if we'd like to execute the plan reply *yes*, and Terraform will spin up the **webserver** container for us.
+When asked if we'd like to execute the plan, reply *yes*, and Terraform will spin up the **webserver** container for us.
 
 We can verify the container is running with `docker ps`:
 
@@ -250,7 +250,7 @@ terraform destroy
 
 ## 6. Add The Chaosterraform Control
 
-In order to use the `chaosterraform` control we first need to install the **chaostoolkit-terraform** Python package:
+To use the `chaosterraform` control, we first need to install the **chaostoolkit-terraform** Python package:
 
 ```shell
 pip install -U chaostoolkit-terraform
@@ -258,7 +258,7 @@ pip install -U chaostoolkit-terraform
 
 We'll now add the `chaosterraform` control to the experiment so that Chaos Toolkit will automatically apply the template we defined in **main.tf**.
 
-**By default the control will apply the template found in the same directory as the experiment file**. This behaviour can be changed of course but for now let's make sure our directory structure is like this:
+**By default, the control will apply the template located in the same directory as the experiment file**. This behaviour can be changed, of course, but for now let's make sure our directory structure is like this:
 
 ```text
 .
@@ -284,9 +284,9 @@ controls:
 ...
 ```
 
-For demonstration, we also set the `silent: false` argument. This way we can see the output of Terraform commands being executed. This is not necessary to use the extension and we'll remove it later.
+For demonstration, we also set the `silent: false` argument. This way we can see the output of Terraform commands being executed. This flag is not necessary to use the extension and we'll remove it later.
 
-And to check everything is working as expected, let's run the experiment again:
+And to check everything is working as expected, let's rerun the experiment:
 
 ```shell
 chaos run experiment.yaml
@@ -312,12 +312,12 @@ chaos run experiment.yaml
 
 You'll notice the experiment execution now includes the output of two Terraform instructions: `terraform apply` and `terraform destroy`.
 
-By adding the **chaosterraform** control to the template, ChaosToolkit will now automatically create the experiment resources at the start, and remove them once the experiment is finished.
+By adding the **chaosterraform** control to the template, ChaosToolkit will automatically create the experiment resources at the start and remove them once the experiment is finished.
 
 ## 7. Handle Terraform Inputs And Outputs
 
-One big advantage of handling resource deployment with Terraform is reusing infrastructure code time and time again by creating modules. For that we need to be able to
-personalise our resources by defining input and output variables.
+One major advantage of handling resource deployment with Terraform is reusing infrastructure code by creating modules. For that, we need to be able to
+personalize our resources by defining input and output variables.
 
 We'll now improve our experiment template and create a more polished version that accepts the following input variables: *container name*, *exposed port* and *restart policy*.
 
@@ -343,7 +343,7 @@ variable "restart_policy" {
 }
 ```
 
-And now that we have some input variables, let's use them in the **main.tf** Terraform file:
+And now that we have some input variables let's use them in the **main.tf** Terraform file:
 
 ```terraform
 # ./main.tf
@@ -383,7 +383,7 @@ controls:
 
 ### 7.1. Read Terraform Outputs From Experiments
 
-The **chaosterraform** control allows us to use exported outputs from the Terraform module just like any other experiment variable.
+The **chaosterraform** control allows us to use exported outputs from the Terraform module like any other experiment variable.
 
 By default, **the control will inject Terraform outputs into the Chaos Toolkit configuration using the same output name prefixed by** `tf_out__` (i.e. `tf_out__my_variable`).
 
@@ -420,7 +420,7 @@ You can see the full example for both the experiment and Terraform module [over 
 
 ## 8. Run The Final Experiment
 
-Now that we polished-up both our chaos experiment and Terraform module, your directory structure should look something like this:
+Now that we polished up both our chaos experiment and Terraform module, your directory structure should look something like this:
 
 ```text
 .
@@ -441,14 +441,14 @@ chaos run experiment.yaml
 # [INFO] Terraform: removing experiment resources
 ```
 
-Try play around with the control inputs and, for example, change the *restart_policy* to `no`. If you do that you'll end up with a deviated experiment as the container will no longer auto-restart after it's stopped by the experiment.
+Try to play around with the control inputs and, for example, change the *restart_policy* to `no`. If you do that, you'll end up with a deviated experiment, as the container will no longer auto-restart after the experiment method stops it.
 
 
 ## 9. Conclusion
 
-In this article, we learned how we can use Chaos Toolkit and Terraform to automatically creating supporting resources for chaos experiments.
+In this article, we learned how to use Chaos Toolkit and Terraform to create supporting resources for chaos experiments automatically.
 
-The [chaostoolkit-terraform][] module opens up a lot of possibilities and helps us orchestrate complex experiments.
+The [chaostoolkit-terraform][] module opens up many possibilities and helps us orchestrate complex experiments.
 
 As always, you can find the working code example described in this article [over on GitHub][example]{:target="_blank"}.
 
