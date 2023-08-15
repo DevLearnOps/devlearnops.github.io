@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "ChaosToolkit Steady-State Verification Strategies Explained"
-description: |
+description: >-
     Learn how to use the right steady-state hypothesis verification strategy for ChaosToolkit experiments
     by looking at real-world examples.
 date:   2023-05-12

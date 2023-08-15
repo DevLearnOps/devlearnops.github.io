@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A Guide To Probe Tolerances In ChaosToolkit Experiment Verifications"
-description: |
+description: >-
     Learn how to configure hypothesis verification tolerance values for ChaosToolkit experiments.
 date:   2023-05-10
 categories: "chaos-engineering"

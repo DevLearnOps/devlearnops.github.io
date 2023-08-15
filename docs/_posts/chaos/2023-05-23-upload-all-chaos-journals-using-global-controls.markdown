@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Upload All Chaos Toolkit Journals To S3 Using Global Controls"
-description: |
+description: >-
     In this article, we learn how to apply Chaos Toolkit controls globally for all our experiments
     using config files and upload execution journals to an S3 bucket.
 date:   2023-05-23
@@ -9,7 +9,7 @@ categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
 permalink: "/apply-ctk-controls-globally-s3-bucket-upload"
-excerpt: |
+excerpt: >-
     In this article, we learn how to apply Chaos Toolkit controls globally for all our experiments
     using config files and upload execution journals to an S3 bucket.
 ---

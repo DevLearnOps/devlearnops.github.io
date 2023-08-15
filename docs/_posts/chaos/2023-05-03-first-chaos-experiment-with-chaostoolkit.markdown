@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Your First Chaos Engineering Experiment With ChaosToolkit"
-description: |
+description: >-
     Chaos Engineering is not about using complicated and expensive tools.
     It’s about understanding a few principles and using them to design experiments that will help you
     understand the limitation of your system, whether it’s a production environment or even your own laptop.
@@ -25,7 +25,7 @@ Getting started with Chaos Engineering can be overwhelming. We all hear the cool
 
 In this article, I'll explain that practising **Chaos Engineering** is not about using complicated and expensive tools. **It's about understanding a few principles and using them to design experiments that will help you understand the limitation of your system**, whether it's a production environment or even your own laptop.
 
-![Chaos Experiment](/assets/images/first-chaos-experiment-w-chaostoolkit-1.jpg)
+![Chaos Experiment](/assets/images/posts/first-chaos-experiment-w-chaostoolkit-1.jpg)
 
 ## 2. Before We Start
 

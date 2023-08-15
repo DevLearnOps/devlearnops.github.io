@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Install Software Packages in Alpine-Based Containers"
-description: |
+description: >-
     In this article we'll learn how to customize Alpine-based Docker images by installing
     additional software we need to run our applications in containers.
 date:   2023-05-02

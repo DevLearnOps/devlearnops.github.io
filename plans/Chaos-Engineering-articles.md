@@ -23,6 +23,13 @@ Need to keep in mind that with these articles I'm promoting the following things
 - [x] use environment variables in chaostoolkit experiments
 - [x] experiment safeguards with chaostoolkit: how to bail out of an experiment if the system becomes unstable
 - [ ] how to collect experiment execution results using Reliably cloud (Free account for 1 team member)
+
+- [ ] a gentle introduction to load generation for chaos engineers using Grafana k6
+- [ ] Introduction to chaostoolkit-terraform. What problem it solves. (create resources to support the experiment or new resources that are safe to attack).
+- [ ] How to attack ECS services using ToxiProxy chaosawsattacks and Chaosterraform
+- [ ] How to generate user's load for a test system for chaos engineering with K6 and chaosterraform
+- [ ] How to attack an application Load balancer to send a portion of the traffic to a control group (using chaosterraform and chaosaws attacks)
+
 `++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++`
 - [ ] how to get started with chaos engineering even if your production system is not ready
 - [ ] how to safely retrieve secrets from SSM parameter manager for a chaostoolkit experiment

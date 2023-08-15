@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Mastering ChaosToolkit Experiment Configuration: A Comprehensive Guide"
-description: |
+description: >-
     Learn how to use variables in ChaosToolkit tempates and reuse experiments in different contexts
     by providing configuration parameter overrides.
 date:   2023-05-17

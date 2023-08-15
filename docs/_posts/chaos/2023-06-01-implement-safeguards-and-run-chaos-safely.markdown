@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to Implement Safeguards and Run Chaos Experiments Safely"
-description: |
+description: >-
     Experimenting in production has the potential to cause unnecessary customer pain.
     In this article, we’ll learn how to use safeguards in Chaos Toolkit to immediately 
     interrupt an experiment execution before it seriously affects the target system.
@@ -10,7 +10,7 @@ categories: "chaos-engineering"
 tags: chaos-engineering chaostoolkit
 author: "Manuel Castellin"
 permalink: "implement-safeguards-and-run-chaos-safely"
-excerpt: |
+excerpt: >-
     Experimenting in production has the potential to cause unnecessary customer pain.
     In this article, we’ll learn how to use safeguards in Chaos Toolkit to immediately 
     interrupt an experiment execution before it seriously affects the target system.
