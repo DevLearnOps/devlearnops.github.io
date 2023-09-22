@@ -44,6 +44,7 @@ code {
 pre,
 pre code {
   font-size: calc(#{$font-size-sm} - 1px);
+  font-family: 'Roboto Mono', monospace;
 }
 
 td code {
