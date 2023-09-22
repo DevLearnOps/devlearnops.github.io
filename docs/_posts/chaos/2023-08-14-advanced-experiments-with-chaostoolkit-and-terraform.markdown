@@ -107,8 +107,6 @@ method:
     pauses:
       # Allow 5 seconds for the service to recover
       after: 5
-
-
 ```
 
 For now, the experiment template defines a hypothesis and a method.
@@ -179,7 +177,6 @@ resource "docker_container" "nginx" {
     external = 8080
   }
 }
-
 ```
 
 #### Docker Provider on Windows
