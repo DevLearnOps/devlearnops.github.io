@@ -4,7 +4,7 @@ title: Chaos Engineering
 order: 2
 permalink: /chaos-starter-pack/
 description: |
-    TODO
+    Chaos Toolkit Starter Pack for AWS is an OpenSource collection of chaos experiments to kickstart your chaos engineering implementation
 ---
 
 <div class="landing-wrapper">
