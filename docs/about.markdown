@@ -26,9 +26,29 @@ If you're interested in this topic, here at DevLearnOps we're working on a **Cha
 practices using OpenSource tools. Find out more in the [Chaos Engineering](/chaos-starter-pack/) section of the blog.
 
 
-## Follow my work on
+## Follow My Work On
 
 * [YouTube](https://www.youtube.com/c/ManuelCastellin){:target="_blank"}
 * [Facebook](https://www.facebook.com/devlearnops){:target="_blank"}
-* [GitHub](https://github.com/mcastellin){:target="_blank"} / [DevLearnOps](https://github.com/DevLearnOps){:target="_blank"}
+* [GitHub](https://github.com/mcastellin){:target="_blank"} / [DevLearnOps GH](https://github.com/DevLearnOps){:target="_blank"}
 
+
+## Contact Me / Work With Me
+
+You've been following my work on [DevLearnOps](/) and you found the content helpful? **There's plenty more where it came from!**
+
+You can rent my brain to help you and your team write code, deploy applications in the cloud, setup your projects, train your engineers and more.
+
+### Here's a Few Things I Can Help With
+
+* Manage your cloud infrastructure with automations (using Go, Python, Java, and more)
+* Implement Chaos Engineering using popular Open Source frameworks
+* Streamline application deployments using (Docker, IaC, CI, etc)
+* Train you or your team on how to use the above technologies
+
+<a style="width: 137px" class="landing-btn primary" href="mailto:manuel@castellinconsulting.com?subject=Contact From DevLearnOps Website&body=Hi Manuel,%0D%0AI'm [Your Name], and I'm reaching out through the contact form on your website to ask about [briefly state the purpose of the inquiry].%0D%0A%0D%0A[Your message here]%0D%0A%0D%0A%0D%0AFor your reference, here is my contact information:%0D%0A%0D%0AName: [Your Name]%0D%0AEmail: [Your Email]%0D%0APhone: [Optional -- Your Phone Number]%0D%0A%0D%0A%0D%0ALooking forward to hearing from you.%0D%0A%0D%0A%0D%0ABest regards,">
+    email me now
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 btn-icon">
+      <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
+    </svg>
+</a>
