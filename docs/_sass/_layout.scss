@@ -278,6 +278,17 @@ code {
   padding: 0 4px;
 }
 
+.pre-source {
+  position: relative;
+  padding-bottom: 18px;
+}
+.pre-source > span {
+  font-size: calc(#{$font-size-sm} - 2px);
+  position: absolute;
+  right: 0;
+  top: -16px;
+}
+
 .post-emphasis {
   margin: 32px 0;
   padding: 12px 24px;
