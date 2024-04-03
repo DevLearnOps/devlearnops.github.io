@@ -1,3 +1,4 @@
+https://github.com/mcastellin/golang-mastery
 ---
 layout: post
 title: "Background Tasks And Cancellation In Go (lang)"
@@ -52,7 +53,7 @@ func (op *mockComplexOp) Stop() {
 	}
 }
 ```
-<div class="pre-source"><span>View the full source code <a href="https:/github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main.go#L9-L36" target="_blank">here</a></span></div>
+<div class="pre-source"><span>View the full source code <a href="https://github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main.go#L9-L36" target="_blank">here</a></span></div>
 
 As simple as the `mockComplexOp` is, it represents a real-world scenario where we need
 to perform a certain task that is not interruptible. Examples of these tasks are:
@@ -86,7 +87,7 @@ func runOpOnce(op longRunningOp, completedCh chan struct{}) {
 	close(completedCh)
 }
 ```
-<div class="pre-source"><span>View the full source code <a href="https:/github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main.go#L43-L52" target="_blank">here</a></span></div>
+<div class="pre-source"><span>View the full source code <a href="https://github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main.go#L43-L52" target="_blank">here</a></span></div>
 
 In this example, `runOnce()` is a simple wrapper function that simply calls the `Do()` method on a `longRunningOp`
 interface and notify the caller as soon as the operation is completed.
@@ -148,7 +149,7 @@ func runOpWithCancelCh(
 	close(completedCh)
 }
 ```
-<div class="pre-source"><span>View the full source code <a href="https:/github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main.go#L66-L96" target="_blank">here</a></span></div>
+<div class="pre-source"><span>View the full source code <a href="https://github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main.go#L66-L96" target="_blank">here</a></span></div>
 
 The first thing this function does is **decouple the long-running operation from the wrapper**. Because the operation is
 uninterruptible, we can't handle cancellation if the routine is busy running the operation.
@@ -159,7 +160,6 @@ routine*, we also create a dedicated channel to signal the operation completion.
 After spawning the sub-routine, we introduced the handling logic for cancellation using the `select-case`.
 In this implementation, if the `cancelCh` is closed before the operation sub-routine can complete, we call the `op.Stop()` method
 to request graceful termination.
-
 
 
 ### 3.1. The `select-case` construct in Go
@@ -203,6 +203,7 @@ func main() {
 In this second example, *the `select` activates the `case` corresponding to the interaction that completes first
 (our 1-second timer in this case)* giving us a chance to exit the program if the `boolCh` is inactive for too long.
 
+
 ### 3.2. Cancelling an operation with channel
 
 The last thing we need to do is use the `runOpWithCancelCh` to run a new operation and cancel it before it
@@ -232,7 +233,7 @@ func TestBackgroundTaskWithChanCancel(t *testing.T) {
 	}
 } 
 ```
-<div class="pre-source"><span>View the full source code <a href="https:/github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main_test.go#L38-L60" target="_blank">here</a></span></div>
+<div class="pre-source"><span>View the full source code <a href="https://github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main_test.go#L38-L60" target="_blank">here</a></span></div>
 
 ## 4. Cancellation Using Context
 
@@ -274,7 +275,7 @@ func runOpWithContext(
 	close(completed)
 }
 ```
-<div class="pre-source"><span>View the full source code <a href="https:/github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main.go#L98-L129" target="_blank">here</a></span></div>
+<div class="pre-source"><span>View the full source code <a href="https://github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main.go#L98-L129" target="_blank">here</a></span></div>
 
 The implementation is almost identical, except for the cancellation `case` in the handling logic.
 To receive the cancellation signal from a `context.Context` all we have to do is read from the `ctx.Done()` channel.
@@ -303,7 +304,7 @@ func TestBackgroundTaskWithContext(t *testing.T) {
 	}
 } 
 ```
-<div class="pre-source"><span>View the full source code <a href="https:/github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main_test.go#L62-L82" target="_blank">here</a></span></div>
+<div class="pre-source"><span>View the full source code <a href="https://github.com/mcastellin/golang-mastery/blob/main/background-task-cancellation/main_test.go#L62-L82" target="_blank">here</a></span></div>
 
 ## 5. Conclusion
 
