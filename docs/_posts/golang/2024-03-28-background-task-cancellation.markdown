@@ -1,4 +1,3 @@
-https://github.com/mcastellin/golang-mastery
 ---
 layout: post
 title: "Background Tasks And Cancellation In Go (lang)"
